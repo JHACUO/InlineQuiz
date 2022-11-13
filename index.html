@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title></title>
+    <!--<link rel="stylesheet" href="css/main.css" />-->
+    <style>
+        #answer-content, #results-content {
+            list-style: none;
+            padding-left: 20px;
+        }
+        #quiz-section {
+            display:block;
+        }
+        #results-section {
+            display:none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 id="quiz-title">Sample Quiz</h2>
+    <div id="quiz-section">
+        <p id="question-count">0/0</p>
+        <h3 id="question-heading">What is the answer?</h3>
+        <p id="question-sub-heading">Choose the correct answer below:</p>
+        <form>
+            <ul id="answer-content">
+                <li class="answer-item">
+                    <input type="radio" id="answer_1" name="answerblock" value="answer_1">
+                    <label for="answer_1">answer_1</label>
+                </li>
+                <li class="answer-item">
+                    <input type="radio" id="answer_2" name="answerblock" value="answer_2">
+                    <label for="answer_2">answer_2</label>
+                </li>
+                <li class="answer-item">
+                    <input type="radio" id="answer_3" name="answerblock" value="answer_3">
+                    <label for="answer_3">answer_3</label>
+                </li>
+                <li class="answer-item">
+                    <input type="radio" id="answer_4" name="answerblock" value="answer_4">
+                    <label for="answer_4">answer_4</label>
+                </li>
+            </ul>
+        </form>
+
+        <button id="btn-submit">Submit</button>
+        <button id="btn-next">Next</button>
+    </div>
+
+    <div id="results-section">
+        <h3 id="results-heading">What is the answer?</h3>
+        <p id="results-sub-heading">Choose the correct answer below:</p>
+        <ul id="results-content">
+            <li class="results-item">
+                <p class="results-question-content">Q1</p>
+                <p class="results-answer-content">A1</p>
+            </li>
+            <li class="results-item">
+                <p class="results-question-content">Q2</p>
+                <p class="results-answer-content">A2</p>
+            </li>
+            <li class="results-item">
+                <p class="results-question-content">Q3</p>
+                <p class="results-answer-content">A3</p>
+            </li>
+        </ul>
+
+        <button id="btn-restart">Restart</button>
+    </div>
+
+    <script>
+        console.log("loading...");
+        let text = "";
+        let fetchedData = false;
+
+        fetch("data.json")
+            .then(response => response.json())
+            .then(data => text = data)
+            .catch(error => console.log(error));
+
+        while (text = "") {
+            console.log("ready...");
+
+            if (fetchedData) {
+                console.log(data);
+                console.log("ending...");
+                break;
+            }
+        }
+
+
+    </script>
+</body>
+</html>
