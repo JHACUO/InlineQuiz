@@ -99,7 +99,7 @@
                 for (j = 0; i < data.questions[i].q_answers.length; j++) {
 
                     temp += '<li class="answer-item">';
-                    temp += '<input type="radio" id="answer_' + j + '" name="answerblock" value="answer_' + j + '">';
+                    temp += '<input type="radio" id="q' + i + '_answer_' + j + '" name="answerblock" value="answer_' + j + '">';
                     temp += '<label for="answer_' + j + '">' + data.questions[i].q_answers[j] + '</label>';
                     temp += '</li>';
 
@@ -125,21 +125,3 @@
 </body>
 
 </html>
-
-<li class="answer-item">
-    <input type="radio" id="answer_1" name="answerblock" value="answer_1">
-    <label for="answer_1">answer_1</label>
-</li>
-<li class="answer-item">
-    <input type="radio" id="answer_2" name="answerblock" value="answer_2">
-    <label for="answer_2">answer_2</label>
-</li>
-<li class="answer-item">
-    <input type="radio" id="answer_3" name="answerblock" value="answer_3">
-    <label for="answer_3">answer_3</label>
-</li>
-<li class="answer-item">
-    <input type="radio" id="answer_4" name="answerblock" value="answer_4">
-    <label for="answer_4">answer_4</label>
-</li>
-</ul>
