@@ -86,18 +86,18 @@
 
         fetch("https://raw.githubusercontent.com/JHACUO/InlineQuiz/main/data.json")
             .then(response => response.json())
-            .then(data => text = data)
+            .then(data => console.log(data))
             .catch(error => console.log(error));
 
-        while (text = "") {
-            console.log("ready...");
+        // while (text = "") {
+        //     console.log("ready...");
 
-            if (fetchedData) {
-                console.log(data);
-                console.log("ending...");
-                break;
-            }
-        }
+        //     if (fetchedData) {
+        //         console.log(data);
+        //         console.log("ending...");
+        //         break;
+        //     }
+        // }
     </script>
 </body>
 
