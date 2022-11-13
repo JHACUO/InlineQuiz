@@ -20,19 +20,25 @@
             display: none;
         }
         
-        #quiz-section>.question-section:first-of-type {
-            display: block;
-        }
-        
         #reposnse-section,
         #error-section,
         #results-section {
             display: none;
         }
+        
+        .correct-response,
+        .incorrect-response,
+        .general-response {
+            display: none;
+        }
+        
+        .inline-quiz .on {
+            display: block;
+        }
     </style>
 </head>
 
-<body>
+<body class="inline-quiz">
     <div id="reposnse-section">
         <h2 class="quiz-title">Sample Quiz</h2>
         <h3 class="quiz-title">No Response from AZURE YET</h3>
@@ -76,7 +82,7 @@
         let fetchedData = false;
         let currentQuestion = 0;
         var generatedQuizHTML = "";
-
+        var quizSections = null;
 
         getQuestionData();
 
@@ -102,26 +108,29 @@
                 for (j = 0; j < data.questions[i].q_answers.length; j++) {
                     generatedQuizHTML += '<li class="answer-item">';
                     generatedQuizHTML += '<input type="radio" id="q' + i + '_answer_' + j + '" name="answerblock" value="answer_' + j + '"';
-                    if (correct.includes((j + 1))) {
-                        generatedQuizHTML += ' data-status="y"';
-                        console.log("this answer is correct");
-                    }
+                    //if (correct.includes((j + 1))) generatedQuizHTML += ' data-status="y"';
+                    if (correct == (j + 1)) generatedQuizHTML += ' data-answer="correct"';
+                    else generatedQuizHTML += ' data-answer="incorrect"';
                     generatedQuizHTML += '>';
                     generatedQuizHTML += '<label for="answer_' + j + '">' + data.questions[i].q_answers[j] + '</label>';
                     generatedQuizHTML += '</li>';
                 }
                 generatedQuizHTML += '</ul>';
                 generatedQuizHTML += '</form>';
-                if (data.questions[i].f_correct.trim() != "") generatedQuizHTML += '<p>' + data.questions[i].f_correct + '</p>';
-                if (data.questions[i].f_incorrect.trim() != "") generatedQuizHTML += '<p>' + data.questions[i].f_incorrect + '</p>';
-                if (data.questions[i].f_general.trim() != "") generatedQuizHTML += '<p>' + data.questions[i].f_general + '</p>';
                 generatedQuizHTML += '<div class="question-footer">';
                 generatedQuizHTML += '<button class="btn-submit" id="btn-submit_q' + i + '" data-question-section="q' + i + '">Submit</button>';
-                generatedQuizHTML += '<button class="btn-next" id="btn-next_q' + i + '" data-question-section="q' + i + '">Next</button>';
+                generatedQuizHTML += '</div>';
+                generatedQuizHTML += '<div class="question-response-footer" id="question-response-footer_q' + i + '">';
+                if (data.questions[i].f_correct.trim() != "") generatedQuizHTML += '<p class="correct-response">' + data.questions[i].f_correct + '</p>';
+                if (data.questions[i].f_incorrect.trim() != "") generatedQuizHTML += '<p class="incorrect-response">' + data.questions[i].f_incorrect + '</p>';
+                if (data.questions[i].f_general.trim() != "") generatedQuizHTML += '<p class="general-response">' + data.questions[i].f_general + '</p>';
+                generatedQuizHTML += '<button class="btn-next" id="btn-next_q' + i + '" data-question-section="q' + i + '">Next Question</button>';
                 generatedQuizHTML += '</div>';
                 generatedQuizHTML += '</div>';
             }
             document.getElementById("quiz-section").innerHTML = generatedQuizHTML;
+            quizSections = document.querySelectorAll('#quiz-section .question-section');
+            quizSections[currentQuestion].classList.add("on");
         }
 
 
@@ -130,22 +139,28 @@
                 var currentQuizSection = e.target.getAttribute('data-question-section');
                 console.log("clicked submit - " + e.target.getAttribute('data-question-section'));
                 //console.log("clicked option - " + document.querySelector('input[name="answerblock"]:checked').value);
-                var isCorrect = document.querySelector('#question-section_' + currentQuizSection + ' input[name="answerblock"]:checked').getAttribute("data-status");
+                var isCorrect = document.querySelector('#question-section_' + currentQuizSection + ' input[name="answerblock"]:checked').getAttribute("data-answer");
                 switch (isCorrect) {
-                    case 'y':
+                    case 'correct':
                         console.log("correct!!!");
+                        break;
+                    case 'incorrect':
+                        console.log("incorrect");
                         break;
                     case null:
                         console.log("empty");
                         break;
-                    default:
-                        console.log("incorrect");
                 }
             }
 
             if (e.target && e.target.className == 'btn-next') {
                 console.log("clicked next - " + e.target.getAttribute('data-question-section'));
+                for (k = 0; k < quizSections.length; k++) {
+                    quizSections[k].classList.remove("on");
+                }
                 currentQuestion++;
+                quizSections[currentQuestion].classList.add("on");
+
             }
 
             //restart the quiz
