@@ -337,7 +337,12 @@
                 generatedQuizHTML += '<button class="btn-submit acuo-btn" id="btn-submit_q' + i + '" data-question-section="q' + i + '">Submit</button>';
                 generatedQuizHTML += '<button class="btn-next acuo-btn" id="btn-next_q' + i + '" data-question-section="q' + i + '">Next Question</button>';
                 generatedQuizHTML += '<p class="btn-submit-error" id="btn-submit-error_q' + i + '">Please make a selection above.</p>';
+                generatedQuizHTML += '<dic class="progress">';
+                for (j = 0; j < data.questions[i].q_answers.length; j++) {
+                    generatedQuizHTML += '<div class="progress-dots"></div>';
+                }
                 generatedQuizHTML += '<p class="question-count">' + (i + 1) + '/' + length + '</p>';
+                generatedQuizHTML += '</div>';
                 generatedQuizHTML += '</div>';
                 generatedQuizHTML += '<div class="question-response-footer on" id="question-response-footer_q' + i + '">';
                 // if (data.questions[i].f_correct !== null && data.questions[i].f_correct.trim() != "") generatedQuizHTML += '<p class="correct-response">' + data.questions[i].f_correct + '</p>';
