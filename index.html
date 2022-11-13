@@ -104,7 +104,7 @@
                 generatedQuizHTML += '<div class="question-header">';
                 generatedQuizHTML += '<p class="question-count">' + (i + 1) + '/' + length + '</p>';
                 generatedQuizHTML += '<h3 class="question-heading">' + data.questions[i].q_heading + '</h3>';
-                if (data.questions[i].q_subheading !== null && data.questions[i].q_subheading.trim() != "") generatedQuizHTML += '<p class="question-sub-heading">' + data.questions[i].q_subheading + '</p>';
+                // if (data.questions[i].q_subheading !== null && data.questions[i].q_subheading.trim() != "") generatedQuizHTML += '<p class="question-sub-heading">' + data.questions[i].q_subheading + '</p>';
                 generatedQuizHTML += '</div>';
                 generatedQuizHTML += '<form id="q' + i + '_answer-section">';
                 generatedQuizHTML += '<ul class="answer-content">';
@@ -126,9 +126,9 @@
                 generatedQuizHTML += '<p class="btn-submit-error" id="btn-submit-error_q' + i + '">Please make a selection above.</p>';
                 generatedQuizHTML += '</div>';
                 generatedQuizHTML += '<div class="question-response-footer on" id="question-response-footer_q' + i + '">';
-                if (data.questions[i].f_correct !== null && data.questions[i].f_correct.trim() != "") generatedQuizHTML += '<p class="correct-response">' + data.questions[i].f_correct + '</p>';
-                if (data.questions[i].f_incorrect !== null && data.questions[i].f_incorrect.trim() != "") generatedQuizHTML += '<p class="incorrect-response">' + data.questions[i].f_incorrect + '</p>';
-                if (data.questions[i].f_general !== null && data.questions[i].f_general.trim() != "") generatedQuizHTML += '<p class="general-response">' + data.questions[i].f_general + '</p>';
+                // if (data.questions[i].f_correct !== null && data.questions[i].f_correct.trim() != "") generatedQuizHTML += '<p class="correct-response">' + data.questions[i].f_correct + '</p>';
+                // if (data.questions[i].f_incorrect !== null && data.questions[i].f_incorrect.trim() != "") generatedQuizHTML += '<p class="incorrect-response">' + data.questions[i].f_incorrect + '</p>';
+                // if (data.questions[i].f_general !== null && data.questions[i].f_general.trim() != "") generatedQuizHTML += '<p class="general-response">' + data.questions[i].f_general + '</p>';
                 generatedQuizHTML += '<button class="btn-next" id="btn-next_q' + i + '" data-question-section="q' + i + '">Next Question</button>';
                 generatedQuizHTML += '</div>';
                 generatedQuizHTML += '</div>';
