@@ -75,7 +75,7 @@
         getData();
 
         async function getData() {
-            const response = await fetch('https://github.com/JHACUO/InlineQuiz/blob/feature/mcq_setup/data.json');
+            const response = await fetch('https://raw.githubusercontent.com/JHACUO/InlineQuiz/feature/mcq_setup/data.json');
             console.log(response);
             const data = await response.json();
             console.log(data);
