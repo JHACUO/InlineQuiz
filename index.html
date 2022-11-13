@@ -118,7 +118,8 @@
             text-align: center;
         }
         
-        .answer-content.answered .answered-status {
+        .answer-content .show-answer-correct .answered-status,
+        .answer-content .show-answer-incorrect .answered-status {
             display: flex;
         }
         
@@ -126,6 +127,11 @@
             display: none;
             width: 100%;
             padding: 5px;
+        }
+        
+        .answer-content .show-answer-correct .answered-status .correct,
+        .answer-content .show-answer-incorrect .answered-status .incorrect {
+            display: block;
         }
         
         .answered-status>div.incorrect {
