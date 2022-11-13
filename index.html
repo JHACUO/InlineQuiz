@@ -36,8 +36,8 @@
             display: none;
         }
         
-        .inline-quiz>.on {
-            display: block;
+        .inline-quiz .on {
+            display: block !important;
         }
     </style>
 </head>
@@ -78,7 +78,7 @@
         </ul>
 
     </div>
-    <button id="btn-restart">Restart</button>
+    <button class="btn-restart">Restart</button>
 
     <script>
         console.log("loading...");
@@ -116,16 +116,16 @@
                     if (correct == (j + 1)) generatedQuizHTML += ' data-answer="correct"';
                     else generatedQuizHTML += ' data-answer="incorrect"';
                     generatedQuizHTML += '>';
-                    generatedQuizHTML += '<label for="answer_' + j + '">' + data.questions[i].q_answers[j] + '</label>';
+                    generatedQuizHTML += '<label for="q' + i + '_answer_' + j + '">' + data.questions[i].q_answers[j] + '</label>';
                     generatedQuizHTML += '</li>';
                 }
                 generatedQuizHTML += '</ul>';
                 generatedQuizHTML += '</form>';
-                generatedQuizHTML += '<div class="question-footer">';
+                generatedQuizHTML += '<div class="question-footer" id="question-footer_q' + i + '">';
                 generatedQuizHTML += '<button class="btn-submit" id="btn-submit_q' + i + '" data-question-section="q' + i + '">Submit</button>';
                 generatedQuizHTML += '<p class="btn-submit-error" id="btn-submit-error_q' + i + '">Please make a selection above.</p>';
                 generatedQuizHTML += '</div>';
-                generatedQuizHTML += '<div class="question-response-footer" id="question-response-footer_q' + i + '">';
+                generatedQuizHTML += '<div class="question-response-footer on" id="question-response-footer_q' + i + '">';
                 if (data.questions[i].f_correct.trim() != "") generatedQuizHTML += '<p class="correct-response">' + data.questions[i].f_correct + '</p>';
                 if (data.questions[i].f_incorrect.trim() != "") generatedQuizHTML += '<p class="incorrect-response">' + data.questions[i].f_incorrect + '</p>';
                 if (data.questions[i].f_general.trim() != "") generatedQuizHTML += '<p class="general-response">' + data.questions[i].f_general + '</p>';
@@ -146,6 +146,11 @@
                 //console.log("clicked option - " + document.querySelector('input[name="answerblock"]:checked').value);
                 var isCorrect = document.querySelector('#question-section_' + currentQuizSection + ' input[name="answerblock"]:checked');
                 if (isCorrect !== null) {
+                    document.getElementById("question-footer_" + currentQuizSection).classList.remove("on");
+                    var quizAnswers = document.querySelectorAll('#question-section_' + currentQuizSection + ' .answer-item>input[type="radio"]');
+                    for (m = 0; m < quizAnswers.length; m++) {
+                        quizAnswers[m].disabled = true;
+                    }
                     switch (isCorrect.getAttribute("data-answer")) {
                         case 'correct':
                             console.log("correct!!!");
