@@ -16,6 +16,14 @@
             padding-left: 20px;
         }
         
+        #quiz-section>.question-section {
+            display: none;
+        }
+        
+        #quiz-section>.question-section:first-child {
+            display: block;
+        }
+        
         #reposnse-section,
         #error-section,
         #results-section {
@@ -81,6 +89,7 @@
             console.log(data);
             length = data.questions.length;
             var temp = "";
+            var correct;
 
             temp += '<h2 class="quiz-title">' + 'Overal heading' + '</h2>';
             for (i = 0; i < length; i++) {
@@ -92,9 +101,15 @@
                 temp += '</div>';
                 temp += '<form id="q' + i + '_answer-content">';
                 temp += '<ul class="answer-section">';
+                correct = data.questions[i].q_correct;
                 for (j = 0; j < data.questions[i].q_answers.length; j++) {
                     temp += '<li class="answer-item">';
-                    temp += '<input type="radio" id="q' + i + '_answer_' + j + '" name="answerblock" value="answer_' + j + '">';
+                    temp += '<input type="radio" id="q' + i + '_answer_' + j + '" name="answerblock" value="answer_' + j + '"';
+                    if (correct.includes((j + 1))) {
+                        temp += ' data-status="y"';
+                        console.log("this answer is correct");
+                    }
+                    temp += '>';
                     temp += '<label for="answer_' + j + '">' + data.questions[i].q_answers[j] + '</label>';
                     temp += '</li>';
                 }
@@ -104,18 +119,20 @@
                 temp += '<p>' + data.questions[i].f_incorrect + '</p>';
                 temp += '<p>' + data.questions[i].f_general + '</p>';
                 temp += '<div class="question-footer">';
-                temp += '<button id="btn-submit">Submit</button>';
-                temp += '<button id="btn-next">Next</button>';
+                temp += '<button class="btn-submit" id="btn-submit_q' + i + '" data-question-section="question-section_q' + i + '>Submit</button>';
+                temp += '<button class="btn-next" id="btn-next_q' + i + '" data-question-section="question-section_q' + i + '>Next</button>';
                 temp += '</div>';
                 temp += '</div>';
             }
-
-
-
             document.getElementById("quiz-section").innerHTML = temp;
-
-
         }
+
+
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.className == 'btn-submit') {
+                console.log("clicked - " + e.target.getAttribute('data-question-section'));
+            }
+        });
     </script>
 </body>
 
