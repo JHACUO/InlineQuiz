@@ -36,7 +36,7 @@
             display: none;
         }
         
-        .inline-quiz .on {
+        .inline-quiz>.on {
             display: block;
         }
     </style>
@@ -144,9 +144,9 @@
                 var currentQuizSection = e.target.getAttribute('data-question-section');
                 console.log("clicked submit - " + e.target.getAttribute('data-question-section'));
                 //console.log("clicked option - " + document.querySelector('input[name="answerblock"]:checked').value);
-                var isCorrect = document.querySelector('#question-section_' + currentQuizSection + ' input[name="answerblock"]:checked').getAttribute("data-answer");
+                var isCorrect = document.querySelector('#question-section_' + currentQuizSection + ' input[name="answerblock"]:checked');
                 if (isCorrect !== null) {
-                    switch (isCorrect) {
+                    switch (isCorrect.getAttribute("data-answer")) {
                         case 'correct':
                             console.log("correct!!!");
                             document.getElementById("question-response-footer_" + currentQuizSection).classList.add("on");
