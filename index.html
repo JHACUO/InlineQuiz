@@ -17,12 +17,16 @@
         }
         /* Quiz and answer section styling */
         
+        .answer-content.answered {
+            margin-left: 100px;
+        }
+        
         #quiz-section>.question-section {
             display: none;
         }
         
         .question-heading {
-            font-size: 1.2em;
+            font-size: 1.5em;
         }
         
         .answer-item {
@@ -44,9 +48,8 @@
             display: block;
             position: relative;
             font-size: 1.25em;
-            padding: 25px 25px 25px 80px;
+            padding: 1em 1em 1em 3.5em;
             height: 100%;
-            z-index: 9;
             cursor: pointer;
             -webkit-transition: all 0.25s linear;
             min-height: 0.5em;
@@ -64,6 +67,10 @@
             left: 2.5em;
             transition: border .25s linear;
             -webkit-transition: border .5s linear;
+        }
+        
+        .answer-content.answered .answer-item .check {
+            left: 8.75em;
         }
         
         .answer-item .check::before {
@@ -90,6 +97,7 @@
         
         .answer-item input[type=radio]:checked~label {
             color: #260B34;
+            border: 2px solid #8a7098;
         }
         /* ====================*/
         
@@ -227,6 +235,7 @@
                     for (m = 0; m < quizAnswers.length; m++) {
                         quizAnswers[m].disabled = true;
                     }
+                    document.querySelectorAll('#question-section_' + currentQuizSection + ' .answer-content').classList.add("answered");
                     switch (isCorrect.getAttribute("data-answer")) {
                         case 'correct':
                             console.log("correct!!!");
