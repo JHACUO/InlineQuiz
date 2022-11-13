@@ -99,6 +99,73 @@
             color: #260B34;
             border: 2px solid #8a7098;
         }
+        
+        .answer-content.answered .answer-item input[type=radio]:checked~label {
+            background: #eee;
+        }
+        
+        .answered-status {
+            display: none;
+            position: absolute;
+            left: 10px;
+            width: 89px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: normal;
+            align-items: baseline;
+            align-content: normal;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        
+        .answer-content.answered .answered-status {
+            display: block;
+        }
+        
+        .answered-status>div {
+            width: 100%;
+            padding: 5px;
+        }
+        
+        .answered-status>div.incorrect {
+            background-color: #f5c6cb;
+            border: 2px solid #f5c6cb;
+        }
+        
+        .answered-status>div.correct {
+            background-color: #c3e6cb;
+            border: 2px solid #c3e6cb;
+        }
+        
+        .answered-status>div::after {
+            content: "";
+            display: block;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            margin-left: -10px;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            border-width: 20px;
+            border-right-width: 0;
+            border-top-color: transparent;
+            margin: -20px 0 0;
+            left: auto;
+            right: -34px;
+            top: 50%;
+            bottom: auto;
+        }
+        
+        .answered-status>div.incorrect::after {
+            border-color: #f5c6cb transparent transparent;
+            border-left-color: #f5c6cb;
+        }
+        
+        .answered-status>div.correct::after {
+            border-color: #c3e6cb transparent transparent;
+            border-left-color: #c3e6cb;
+        }
         /* ====================*/
         
         #reposnse-section,
@@ -201,7 +268,15 @@
                     else generatedQuizHTML += ' data-answer="incorrect"';
                     generatedQuizHTML += '>';
                     generatedQuizHTML += '<label for="q' + i + '_answer_' + j + '">' + data.questions[i].q_answers[j] + '</label>';
-                    generatedQuizHTML += '<div class="check"><div class="inside"></div></div></li>';
+                    generatedQuizHTML += '<div class="check"><div class="inside"></div></div>';
+
+
+                    generatedQuizHTML += '<div class="answered-status">';
+                    generatedQuizHTML += '<div class="correct">Correct!</div>';
+                    generatedQuizHTML += '<div class="incorrect">Incorrect</div>';
+                    generatedQuizHTML += '</div>';
+
+                    generatedQuizHTML += '</li>';
                 }
                 generatedQuizHTML += '</ul>';
                 generatedQuizHTML += '</form>';
@@ -235,7 +310,7 @@
                     for (m = 0; m < quizAnswers.length; m++) {
                         quizAnswers[m].disabled = true;
                     }
-                    document.querySelectorAll('#question-section_' + currentQuizSection + ' .answer-content').classList.add("answered");
+                    document.querySelector('#question-section_' + currentQuizSection + ' .answer-content').classList.add("answered");
                     switch (isCorrect.getAttribute("data-answer")) {
                         case 'correct':
                             console.log("correct!!!");
