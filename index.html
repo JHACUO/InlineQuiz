@@ -220,7 +220,9 @@
             cursor: pointer;
             text-decoration: none;
             overflow: hidden;
-            font-weight: 500;
+            font-size: 1.15em;
+            min-width: 200px;
+            height: 50px;
         }
         
         .acuo-btn:hover,
@@ -228,6 +230,16 @@
             background-color: #643075;
             border-color: #643075;
             color: #fff;
+        }
+        
+        .question-footer {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            align-content: stretch;
+            margin: 0 0.5em;
         }
     </style>
 </head>
@@ -341,7 +353,8 @@
 
 
         document.addEventListener('click', function(e) {
-            if (e.target && e.target.className == 'btn-submit') {
+            //if (e.target && e.target.className == 'btn-submit') {
+            if (e.target && e.target.classList.contains('btn-submit')) {
                 var currentQuizSection = e.target.getAttribute('data-question-section');
                 console.log("clicked submit - " + e.target.getAttribute('data-question-section'));
                 //console.log("clicked option - " + document.querySelector('input[name="answerblock"]:checked').value);
@@ -379,7 +392,8 @@
                 }
             }
 
-            if (e.target && e.target.className == 'btn-next') {
+            //if (e.target && e.target.className == 'btn-next') {
+            if (e.target && e.target.classList.contains('btn-next')) {
                 console.log("clicked next - " + e.target.getAttribute('data-question-section'));
                 for (k = 0; k < quizSections.length; k++) {
                     quizSections[k].classList.remove("on");
@@ -393,7 +407,8 @@
 
             //restart the quiz
             //set everything back to inital status
-            if (e.target && e.target.className == 'btn-restart') {
+            //if (e.target && e.target.className == 'btn-restart') {
+            if (e.target && e.target.classList.contains('btn-restart')) {
                 console.log("clicked restart - ");
                 currentQuestion = 0;
                 document.getElementById("quiz-section").innerHTML = generatedQuizHTML;
