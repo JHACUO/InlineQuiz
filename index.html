@@ -16,20 +16,32 @@
             padding-left: 20px;
         }
         
-        #quiz-section {
-            display: block;
+        #reposnse-section,
+        #error-section,
+        #results-section {
+            display: none;
         }
         
         #results-section {
-            display: none;
+            display: block;
         }
     </style>
 </head>
 
 <body>
+    <div id="reposnse-section">
+        <h2 class="quiz-title">Sample Quiz</h2>
+        <h3 class="quiz-title">No Response from AZURE YET</h3>
 
-    <h2 id="quiz-title">Sample Quiz</h2>
+    </div>
+
+    <div id="error-section">
+        <h2 class="quiz-title">Sample Quiz</h2>
+        <h3 class="quiz-title">No question content on AZURE</h3>
+    </div>
+
     <div id="quiz-section">
+        <h2 class="quiz-title">Sample Quiz</h2>
         <p id="question-count">0/0</p>
         <h3 id="question-heading">What is the answer?</h3>
         <p id="question-sub-heading">Choose the correct answer below:</p>
@@ -56,9 +68,12 @@
 
         <button id="btn-submit">Submit</button>
         <button id="btn-next">Next</button>
+
+        <div class="container"></div>
     </div>
 
     <div id="results-section">
+        <h2 id="quiz-title">Sample Quiz</h2>
         <h3 id="results-heading">What is the answer?</h3>
         <p id="results-sub-heading">Choose the correct answer below:</p>
         <ul id="results-content">
@@ -84,20 +99,35 @@
         let text = "";
         let fetchedData = false;
 
-        fetch("https://raw.githubusercontent.com/JHACUO/InlineQuiz/main/data.json")
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error));
 
-        // while (text = "") {
-        //     console.log("ready...");
+        async function GetQuestions() {
+            let url = 'https://raw.githubusercontent.com/JHACUO/InlineQuiz/main/data.json';
+            try {
+                let contentResponse = await fetch(url);
+                return await contentResponse.json();
+            } catch (error) {
+                console.log(error);
+            }
+        }
 
-        //     if (fetchedData) {
-        //         console.log(data);
-        //         console.log("ending...");
-        //         break;
-        //     }
-        // }
+        async function RenderQuestions() {
+            let questions = await GetQuestions();
+            let html = '';
+            questions.forEach(user => {
+                let htmlSegment = `<div class="user">
+                                    <img src="${user.profileURL}" >
+                                    <h2>${user.firstName} ${user.lastName}</h2>
+                                    <div class="email"><a href="email:${user.email}">${user.email}</a></div>
+                                </div>`;
+
+                html += htmlSegment;
+            });
+
+            let container = document.querySelector('.container');
+            container.innerHTML = html;
+        }
+
+        RenderQuestions();
     </script>
 </body>
 
