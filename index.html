@@ -101,7 +101,8 @@
         }
         
         .answer-content.answered .answer-item input[type=radio]:checked~label {
-            background: #eee;
+            background: #ede6ed;
+            font-weight: bold;
         }
         
         .answered-status {
@@ -132,6 +133,14 @@
         .answer-content .show-answer-correct .answered-status .correct,
         .answer-content .show-answer-incorrect .answered-status .incorrect {
             display: block;
+        }
+        
+        .answer-content .show-answer-correct label {
+            border: 2px solid #c3e6cb;
+        }
+        
+        .answer-content .show-answer-incorrect label {
+            border: 2px solid #f5c6cb;
         }
         
         .answered-status>div.incorrect {
