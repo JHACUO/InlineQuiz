@@ -303,7 +303,7 @@
                 var currentQuizSection = e.target.getAttribute('data-question-section');
                 console.log("clicked submit - " + e.target.getAttribute('data-question-section'));
                 //console.log("clicked option - " + document.querySelector('input[name="answerblock"]:checked').value);
-                var isCorrect = document.querySelector('#question-section_' + currentQuizSection + ' input[name="radio"]:checked');
+                var isCorrect = document.querySelector('#question-section_' + currentQuizSection + ' input[type="radio"]:checked');
                 if (isCorrect !== null) {
                     document.getElementById("question-footer_" + currentQuizSection).classList.remove("on");
                     document.querySelector('#question-section_' + currentQuizSection + ' .answer-content').classList.add("answered");
