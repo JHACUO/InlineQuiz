@@ -41,35 +41,7 @@
     </div>
 
     <div id="quiz-section">
-        <h2 class="quiz-title">Sample Quiz</h2>
-        <p id="question-count">0/0</p>
-        <h3 id="question-heading">What is the answer?</h3>
-        <p id="question-sub-heading">Choose the correct answer below:</p>
-        <form>
-            <ul id="answer-content">
-                <li class="answer-item">
-                    <input type="radio" id="answer_1" name="answerblock" value="answer_1">
-                    <label for="answer_1">answer_1</label>
-                </li>
-                <li class="answer-item">
-                    <input type="radio" id="answer_2" name="answerblock" value="answer_2">
-                    <label for="answer_2">answer_2</label>
-                </li>
-                <li class="answer-item">
-                    <input type="radio" id="answer_3" name="answerblock" value="answer_3">
-                    <label for="answer_3">answer_3</label>
-                </li>
-                <li class="answer-item">
-                    <input type="radio" id="answer_4" name="answerblock" value="answer_4">
-                    <label for="answer_4">answer_4</label>
-                </li>
-            </ul>
-        </form>
 
-        <button id="btn-submit">Submit</button>
-        <button id="btn-next">Next</button>
-
-        <div class="container"></div>
     </div>
 
     <div id="results-section">
@@ -100,36 +72,74 @@
         let fetchedData = false;
 
 
-        async function GetQuestions() {
-            let url = 'https://raw.githubusercontent.com/JHACUO/InlineQuiz/main/data.json';
-            try {
-                let contentResponse = await fetch(url);
-                console.log("what? " + contentResponse);
-                return await contentResponse.json();
-            } catch (error) {
-                console.log(error);
+        getData();
+
+        async function getData() {
+            const response = await fetch('https://raw.githubusercontent.com/JHACUO/InlineQuiz/main/data.json');
+            console.log(response);
+            const data = await response.json();
+            console.log(data);
+            length = data.questions.length;
+            console.log(data);
+            var temp = "";
+
+            temp += '<h2 class="quiz-title">' + 'Overal heading' + '</h2>';
+
+            for (i = 0; i < length; i++) {
+
+
+
+                temp += '<p id="question-count">' + (i + 1) + '/' + length + '</p>';
+                temp += '<h3 id="question-heading">' + data.questions[i].q_heading + '</h3>';
+                temp += '<p id="question-sub-heading">' + data.questions[i].q_subheading + '</p>';
+                temp += '<form id="answer-content">';
+
+                temp += '<ul class="answer-section">';
+
+                for (j = 0; i < data.questions[i].q_answers.length; j++) {
+
+                    temp += '<li class="answer-item">';
+                    temp += '<input type="radio" id="answer_' + j + '" name="answerblock" value="answer_' + j + '">';
+                    temp += '<label for="answer_' + j + '">' + data.questions[i].q_answers[j] + '</label>';
+                    temp += '</li>';
+
+                }
+
+                temp += '</ul>';
+
+                temp += '<p>' + data.questions[i].f_correct + '</p>';
+                temp += '<p>' + data.questions[i].f_incorrect + '</p>';
+                temp += '<p>' + data.questions[i].f_general + '</p>';
+                temp += '</form>';
+                temp += '<button id="btn-submit">Submit</button>';
+                temp += '<button id="btn-next">Next</button>';
             }
+
+
+
+            document.getElementById("quiz-section").innerHTML = temp;
+
+
         }
-
-        async function RenderQuestions() {
-            let questions = await GetQuestions();
-            let html = '';
-            questions.forEach(user => {
-                let htmlSegment = `<div class="user">
-                                    <img src="${user.profileURL}" >
-                                    <h2>${user.firstName} ${user.lastName}</h2>
-                                    <div class="email"><a href="email:${user.email}">${user.email}</a></div>
-                                </div>`;
-
-                html += htmlSegment;
-            });
-
-            let container = document.querySelector('.container');
-            container.innerHTML = html;
-        }
-
-        RenderQuestions();
     </script>
 </body>
 
 </html>
+
+<li class="answer-item">
+    <input type="radio" id="answer_1" name="answerblock" value="answer_1">
+    <label for="answer_1">answer_1</label>
+</li>
+<li class="answer-item">
+    <input type="radio" id="answer_2" name="answerblock" value="answer_2">
+    <label for="answer_2">answer_2</label>
+</li>
+<li class="answer-item">
+    <input type="radio" id="answer_3" name="answerblock" value="answer_3">
+    <label for="answer_3">answer_3</label>
+</li>
+<li class="answer-item">
+    <input type="radio" id="answer_4" name="answerblock" value="answer_4">
+    <label for="answer_4">answer_4</label>
+</li>
+</ul>
