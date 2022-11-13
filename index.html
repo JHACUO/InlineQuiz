@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -9,15 +10,18 @@
     <title></title>
     <!--<link rel="stylesheet" href="css/main.css" />-->
     <style>
-        #answer-content, #results-content {
+        #answer-content,
+        #results-content {
             list-style: none;
             padding-left: 20px;
         }
+        
         #quiz-section {
-            display:block;
+            display: block;
         }
+        
         #results-section {
-            display:none;
+            display: none;
         }
     </style>
 </head>
@@ -80,7 +84,7 @@
         let text = "";
         let fetchedData = false;
 
-        fetch("data.json")
+        fetch("https://raw.githubusercontent.com/JHACUO/InlineQuiz/main/data.json")
             .then(response => response.json())
             .then(data => text = data)
             .catch(error => console.log(error));
@@ -94,8 +98,7 @@
                 break;
             }
         }
-
-
     </script>
 </body>
+
 </html>
