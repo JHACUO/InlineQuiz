@@ -303,27 +303,34 @@
                 var currentQuizSection = e.target.getAttribute('data-question-section');
                 console.log("clicked submit - " + e.target.getAttribute('data-question-section'));
                 //console.log("clicked option - " + document.querySelector('input[name="answerblock"]:checked').value);
-                var isCorrect = document.querySelector('#question-section_' + currentQuizSection + ' input[name="answerblock"]:checked');
+                var isCorrect = document.querySelector('#question-section_' + currentQuizSection + ' input[name="radio"]:checked');
                 if (isCorrect !== null) {
                     document.getElementById("question-footer_" + currentQuizSection).classList.remove("on");
-                    var quizAnswers = document.querySelectorAll('#question-section_' + currentQuizSection + ' .answer-item>input[type="radio"]');
+                    document.querySelector('#question-section_' + currentQuizSection + ' .answer-content').classList.add("answered");
+
+                    var quizAnswers = document.querySelectorAll('#question-section_' + currentQuizSection + ' .answer-item input[type="radio"]');
                     for (m = 0; m < quizAnswers.length; m++) {
                         quizAnswers[m].disabled = true;
-                    }
-                    document.querySelector('#question-section_' + currentQuizSection + ' .answer-content').classList.add("answered");
-                    switch (isCorrect.getAttribute("data-answer")) {
-                        case 'correct':
-                            console.log("correct!!!");
-                            document.getElementById("question-response-footer_" + currentQuizSection).classList.add("on");
-                            //document.querySelector('#question-response-footer_' + currentQuizSection + ' .correct-response').classList.add("on");
 
-                            break;
-                        case 'incorrect':
-                            console.log("incorrect");
-                            document.getElementById("question-response-footer_" + currentQuizSection).classList.add("on");
-                            //document.querySelector('#question-response-footer_' + currentQuizSection + ' .incorrect-response').classList.add("on");
-                            break;
+                        switch (quizAnswers[m].getAttribute("data-answer")) {
+                            case 'correct':
+                                console.log("correct!!!");
+                                quizAnswers[m].parentElement.classList.add("show-answer-correct");
+                                //document.querySelector('#question-response-footer_' + currentQuizSection + ' .correct-response').classList.add("on");
+
+                                break;
+                            case 'incorrect':
+                                console.log("incorrect");
+                                if (quizAnswers[m].checked == true)
+                                    quizAnswers[m].parentElement.classList.add("show-answer-incorrect");
+                                //document.querySelector('#question-response-footer_' + currentQuizSection + ' .incorrect-response').classList.add("on");
+                                break;
+                        }
+
                     }
+                    document.getElementById("question-response-footer_" + currentQuizSection).classList.add("on");
+                    //var isCorrect = document.querySelector('#question-section_' + currentQuizSection + ' input[name="answerblock"]:checked');
+
                 } else {
                     console.log("empty");
                     document.getElementById("btn-submit-error_" + currentQuizSection).classList.add("on");
