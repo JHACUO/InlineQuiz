@@ -10,8 +10,8 @@
     <title></title>
     <!--<link rel="stylesheet" href="css/main.css" />-->
     <style>
-        #answer-content,
-        #results-content {
+        .answer-content,
+        .results-content {
             list-style: none;
             padding-left: 20px;
         }
@@ -48,7 +48,7 @@
         <h2 id="quiz-title">Sample Quiz</h2>
         <h3 id="results-heading">What is the answer?</h3>
         <p id="results-sub-heading">Choose the correct answer below:</p>
-        <ul id="results-content">
+        <ul class="results-content">
             <li class="results-item">
                 <p class="results-question-content">Q1</p>
                 <p class="results-answer-content">A1</p>
@@ -83,35 +83,31 @@
             var temp = "";
 
             temp += '<h2 class="quiz-title">' + 'Overal heading' + '</h2>';
-
             for (i = 0; i < length; i++) {
-
-
-
-                temp += '<p id="question-count">' + (i + 1) + '/' + length + '</p>';
-                temp += '<h3 id="question-heading">' + data.questions[i].q_heading + '</h3>';
-                temp += '<p id="question-sub-heading">' + data.questions[i].q_subheading + '</p>';
-                temp += '<form id="answer-content">';
-
+                temp += '<div class="question-section" id="question-section_q' + i + '_">';
+                temp += '<div class="question-header">';
+                temp += '<p class="question-count">' + (i + 1) + '/' + length + '</p>';
+                temp += '<h3 class="question-heading">' + data.questions[i].q_heading + '</h3>';
+                temp += '<p class="question-sub-heading">' + data.questions[i].q_subheading + '</p>';
+                temp += '</div>';
+                temp += '<form id="q' + i + '_answer-content">';
                 temp += '<ul class="answer-section">';
-
                 for (j = 0; j < data.questions[i].q_answers.length; j++) {
-
                     temp += '<li class="answer-item">';
                     temp += '<input type="radio" id="q' + i + '_answer_' + j + '" name="answerblock" value="answer_' + j + '">';
                     temp += '<label for="answer_' + j + '">' + data.questions[i].q_answers[j] + '</label>';
                     temp += '</li>';
-
                 }
-
                 temp += '</ul>';
-
+                temp += '</form>';
                 temp += '<p>' + data.questions[i].f_correct + '</p>';
                 temp += '<p>' + data.questions[i].f_incorrect + '</p>';
                 temp += '<p>' + data.questions[i].f_general + '</p>';
-                temp += '</form>';
+                temp += '<div class="question-footer">';
                 temp += '<button id="btn-submit">Submit</button>';
                 temp += '<button id="btn-next">Next</button>';
+                temp += '</div>';
+                temp += '</div>';
             }
 
 

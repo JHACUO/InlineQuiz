@@ -11,7 +11,7 @@
                 "answer 4"
             ],
             "f_correct": "Correct feedback, show if answer is right",
-            "f_incorrect": "Correct feedback, show if answer is wrong",
+            "f_incorrect": "Incorrect feedback, show if answer is wrong",
             "f_general": "General feedback, shown if right or wrong"
         },
         {
@@ -26,7 +26,7 @@
                 "answer 4"
             ],
             "f_correct": "Correct feedback, show if answer is right",
-            "f_incorrect": "Correct feedback, show if answer is wrong",
+            "f_incorrect": "Incorrect feedback, show if answer is wrong",
             "f_general": "General feedback, shown if right or wrong"
         },
         {
@@ -41,7 +41,7 @@
                 "answer 4"
             ],
             "f_correct": "Correct feedback, show if answer is right",
-            "f_incorrect": "Correct feedback, show if answer is wrong",
+            "f_incorrect": "Incorrect feedback, show if answer is wrong",
             "f_general": "General feedback, shown if right or wrong"
         },
         {
@@ -56,7 +56,7 @@
                 "*answer 4"
             ],
             "f_correct": "Correct feedback, show if answer is right",
-            "f_incorrect": "Correct feedback, show if answer is wrong",
+            "f_incorrect": "Incorrect feedback, show if answer is wrong",
             "f_general": "General feedback, shown if right or wrong"
         }
     ]
