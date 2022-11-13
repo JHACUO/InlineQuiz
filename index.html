@@ -104,6 +104,7 @@
             let url = 'https://raw.githubusercontent.com/JHACUO/InlineQuiz/main/data.json';
             try {
                 let contentResponse = await fetch(url);
+                console.log("what? " + contentResponse);
                 return await contentResponse.json();
             } catch (error) {
                 console.log(error);
