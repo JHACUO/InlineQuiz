@@ -145,23 +145,23 @@
                 console.log("clicked submit - " + e.target.getAttribute('data-question-section'));
                 //console.log("clicked option - " + document.querySelector('input[name="answerblock"]:checked').value);
                 var isCorrect = document.querySelector('#question-section_' + currentQuizSection + ' input[name="answerblock"]:checked').getAttribute("data-answer");
-                switch (isCorrect) {
-                    case 'correct':
-                        console.log("correct!!!");
-                        document.getElementById("question-response-footer_" + currentQuizSection).classList.add("on");
-                        document.querySelector('#question-response-footer_' + currentQuizSection + ' .correct-response').classList.add("on");
+                if (isCorrect !== null) {
+                    switch (isCorrect) {
+                        case 'correct':
+                            console.log("correct!!!");
+                            document.getElementById("question-response-footer_" + currentQuizSection).classList.add("on");
+                            document.querySelector('#question-response-footer_' + currentQuizSection + ' .correct-response').classList.add("on");
 
-                        break;
-                    case 'incorrect':
-                        console.log("incorrect");
-                        document.getElementById("question-response-footer_" + currentQuizSection).classList.add("on");
-                        document.querySelector('#question-response-footer_' + currentQuizSection + ' .incorrect-response').classList.add("on");
-                        break;
-                    case null:
-                        console.log("empty");
-                        document.getElementById("btn-submit-error_" + currentQuizSection).classList.add("on");
-
-                        break;
+                            break;
+                        case 'incorrect':
+                            console.log("incorrect");
+                            document.getElementById("question-response-footer_" + currentQuizSection).classList.add("on");
+                            document.querySelector('#question-response-footer_' + currentQuizSection + ' .incorrect-response').classList.add("on");
+                            break;
+                    }
+                } else {
+                    console.log("empty");
+                    document.getElementById("btn-submit-error_" + currentQuizSection).classList.add("on");
                 }
             }
 
