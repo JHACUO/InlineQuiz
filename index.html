@@ -245,6 +245,30 @@
         .btn-next {
             display: none;
         }
+        
+        .progress {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            align-content: stretch;
+            padding: 5px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .progress-dots {
+            background: #ccc;
+            width: 20px;
+            height: 20px;
+            margin: 0 5px;
+            border-radius: 50px;
+        }
+        
+        .question-count {
+            margin: 0 5px;
+        }
     </style>
 </head>
 
@@ -341,8 +365,8 @@
                 generatedQuizHTML += '<button class="btn-submit acuo-btn" id="btn-submit_q' + i + '" data-question-section="q' + i + '">Submit</button>';
                 generatedQuizHTML += '<button class="btn-next acuo-btn" id="btn-next_q' + i + '" data-question-section="q' + i + '">Next Question</button>';
                 generatedQuizHTML += '<p class="btn-submit-error" id="btn-submit-error_q' + i + '">Please make a selection above.</p>';
-                generatedQuizHTML += '<dic class="progress">';
-                for (j = 0; j < data.questions[i].q_answers.length; j++) {
+                generatedQuizHTML += '<div class="progress">';
+                for (n = 0; n < length; n++) {
                     generatedQuizHTML += '<div class="progress-dots"></div>';
                 }
                 generatedQuizHTML += '<p class="question-count">' + (i + 1) + '/' + length + '</p>';
