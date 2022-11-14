@@ -369,7 +369,7 @@
                 generatedQuizHTML += '<div class="question-footer" id="question-footer_q' + i + '">';
                 generatedQuizHTML += '<button class="btn-submit acuo-btn" id="btn-submit_q' + i + '" data-question-section="q' + i + '">Submit</button>';
                 generatedQuizHTML += '<button class="btn-next acuo-btn" id="btn-next_q' + i + '" data-question-section="q' + i + '">Next Question</button>';
-                generatedQuizHTML += '<p class="btn-submit-error" id="btn-submit-error_q' + i + '">Please make a selection above.</p>';
+                generatedQuizHTML += '<p class="btn-submit-error" id="btn-submit-error_q' + i + '">An answer has not been attempted. Please answer the question.</p>';
                 generatedQuizHTML += '<div class="progress">';
                 for (n = 0; n < length; n++) {
                     generatedQuizHTML += '<div class="progress-dots"></div>';
@@ -378,7 +378,11 @@
                 generatedQuizHTML += '</div>';
                 generatedQuizHTML += '</div>';
                 generatedQuizHTML += '<div class="question-response-footer on" id="question-response-footer_q' + i + '">';
-                // if (data.questions[i].f_correct !== null && data.questions[i].f_correct.trim() != "") generatedQuizHTML += '<p class="correct-response">' + data.questions[i].f_correct + '</p>';
+                if (data.questions[i].hasOwnProperty('f_correct') && data.questions[i].f_correct.trim() != "") {
+                    generatedQuizHTML += '<p class="correct-response">' + data.questions[i].f_correct + '</p>';
+                } else {
+                    console.log("no f_correct");
+                }
                 // if (data.questions[i].f_incorrect !== null && data.questions[i].f_incorrect.trim() != "") generatedQuizHTML += '<p class="incorrect-response">' + data.questions[i].f_incorrect + '</p>';
                 // if (data.questions[i].f_general !== null && data.questions[i].f_general.trim() != "") generatedQuizHTML += '<p class="general-response">' + data.questions[i].f_general + '</p>';
                 generatedQuizHTML += '</div>';
