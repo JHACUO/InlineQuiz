@@ -380,9 +380,11 @@
                 generatedQuizHTML += '<div class="question-response-footer on" id="question-response-footer_q' + i + '">';
                 if (data.questions[i].hasOwnProperty('f_correct') && data.questions[i].f_correct.trim() != "") {
                     generatedQuizHTML += '<p class="correct-response">' + data.questions[i].f_correct + '</p>';
+                    console.log("inline yes f_correct");
                 } else {
-                    console.log("no f_correct");
+                    console.log("inline no f_correct");
                 }
+                CheckForKeyNotEmpty(data.questions[i], 'f_correct');
                 // if (data.questions[i].f_incorrect !== null && data.questions[i].f_incorrect.trim() != "") generatedQuizHTML += '<p class="incorrect-response">' + data.questions[i].f_incorrect + '</p>';
                 // if (data.questions[i].f_general !== null && data.questions[i].f_general.trim() != "") generatedQuizHTML += '<p class="general-response">' + data.questions[i].f_general + '</p>';
                 generatedQuizHTML += '</div>';
@@ -393,6 +395,16 @@
             quizSections[currentQuestion].classList.add("on");
         }
 
+        function CheckForKeyNotEmpty(data, key) {
+            var keyExistsAndViable = false;
+            if (data.hasOwnProperty(key) && data.questions[i][key].trim() != "") {
+                existsAndViable = true;
+                console.log("yes " + key);
+            } else {
+                console.log("no " + key);
+            }
+            return existsAndViable;
+        }
 
         document.addEventListener('click', function(e) {
             //if (e.target && e.target.className == 'btn-submit') {
