@@ -398,12 +398,12 @@
         function CheckForKeyNotEmpty(data, key) {
             var keyExistsAndViable = false;
             if (data.hasOwnProperty(key) && data.questions[i][key].trim() != "") {
-                existsAndViable = true;
+                keyExistsAndViable = true;
                 console.log("yes " + key);
             } else {
                 console.log("no " + key);
             }
-            return existsAndViable;
+            return keyExistsAndViable;
         }
 
         document.addEventListener('click', function(e) {
