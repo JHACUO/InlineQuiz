@@ -449,7 +449,7 @@
             generatedProgressHTML += '<p class="correct-count">0/' + length + '</p>';
             generatedProgressHTML += '</div>';
 
-            document.getElementById("question-count").innerHTML = generatedTotalHTML
+            document.getElementById("question-count").innerHTML = generatedTotalHTML;
             document.getElementById("quiz-section").innerHTML = generatedQuizHTML;
             if (length > 1) document.getElementById("progress-section").innerHTML = generatedProgressHTML;
             quizSections = document.querySelectorAll('#quiz-section .question-section');
