@@ -278,18 +278,55 @@
         }
         
         .progress-dots.correct {
-            background-color: #c3e6cb;
-            border: 2px solid #abd5b4;
+            background-color: #71bd81;
+            border: 2px solid #689f73;
+        }
+        
+        .progress-dots.correct::before {
+            display: inline-block;
+            transform: rotate(45deg);
+            height: 9px;
+            width: 3px;
+            border-bottom: 3px solid #fff;
+            border-right: 3px solid #fff;
+            content: "";
+            top: -3px;
+            position: relative;
+            left: 6px;
         }
         
         .progress-dots.incorrect {
-            background-color: #f5c6cb;
-            border: 2px solid #e1b3b8;
+            background-color: #ff95a1;
+            border: 2px solid #eb707e;
+        }
+        
+        .progress-dots.incorrect::before {
+            display: inline-block;
+            transform: rotate(45deg);
+            height: 12px;
+            width: 3px;
+            border-right: 3px solid #fff;
+            content: "";
+            top: -3px;
+            position: relative;
+            left: 5px;
+        }
+        
+        .progress-dots.incorrect::after {
+            display: inline-block;
+            transform: rotate(-45deg);
+            height: 12px;
+            width: 3px;
+            border-right: 3px solid #fff;
+            content: "";
+            top: 0px;
+            position: relative;
+            left: -1px;
         }
         
         .progress-dots.current {
-            background-color: #ede6ed;
-            border: 2px solid #d0c0d9;
+            background-color: #d0c0d9;
+            border: 2px solid #b286c9;
         }
         
         .question-count {
