@@ -284,6 +284,15 @@
         .msg-submit-error {
             display: none;
         }
+        
+        #progress-section {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-end;
+            align-items: center;
+            align-content: stretch;
+        }
     </style>
 </head>
 
@@ -381,7 +390,7 @@
             for (n = 0; n < length; n++) {
                 generatedProgressHTML += '<div class="progress-dots"></div>';
             }
-            generatedProgressHTML += '<p class="question-count">' + (i + 1) + '/' + length + '</p>';
+            generatedProgressHTML += '<p class="question-count">' + (n + 1) + '/' + length + '</p>';
             generatedProgressHTML += '</div>';
 
 
@@ -447,7 +456,7 @@
                     //var isCorrect = document.querySelector('#question-section_' + currentQuizSection + ' input[name="answerblock"]:checked');
 
                 } else {
-                    document.getElementById("btn-submit-error_" + currentQuizSection).style.display = "block";
+                    document.getElementById("msg-submit-error_" + currentQuizSection).style.display = "block";
                 }
 
                 console.log("results" + results);
