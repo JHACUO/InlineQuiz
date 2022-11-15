@@ -372,7 +372,7 @@
     </div>
 
 
-
+    <div id="progress-section"></div>
     <div id="results-section">
         <h2>Quiz complete!</h2>
         <h3>Your results:</h3>
@@ -404,8 +404,8 @@
             length = data.questions.length;
             var correct;
 
+            generatedQuizHTML += '<h2 class="quiz-title">' + 'Quiz' + '</h2>';
             generatedQuizHTML += '<p id="question-count" class="question-count">Question 1 of ' + length + '</p>';
-            //generatedQuizHTML += '<h2 class="quiz-title">' + 'Quiz' + '</h2>';
             for (i = 0; i < length; i++) {
                 generatedQuizHTML += '<div class="question-section" id="question-section_q' + i + '">';
                 generatedQuizHTML += '<div class="question-header">';
@@ -443,7 +443,7 @@
                 generatedQuizHTML += '<div class="question-footer" id="question-footer_q' + i + '">';
                 generatedQuizHTML += '<button class="btn-submit acuo-btn" id="btn-submit_q' + i + '" data-question-section="q' + i + '">Submit</button>';
                 generatedQuizHTML += '<button class="btn-next acuo-btn" id="btn-next_q' + i + '" data-question-section="q' + i + '">Next Question</button>';
-                generatedQuizHTML += '<div id="progress-section"></div></div>';
+                generatedQuizHTML += '</div>';
                 generatedQuizHTML += '</div>';
 
                 //setup results array with ermpty answers
