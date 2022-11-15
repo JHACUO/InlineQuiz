@@ -56,6 +56,7 @@
             min-height: 0.5em;
             border: 2px solid #ccc;
             border-radius: 0.5em;
+            z-index: 10;
         }
         
         .answer-item .check {
@@ -591,7 +592,7 @@
                 console.log("strat results" + results);
 
                 for (p = 0; p < results.length; p++) {
-                    results[p] == "-";
+                    results[p] = "-";
                 }
                 console.log("end results" + results);
 
