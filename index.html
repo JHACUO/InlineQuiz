@@ -298,6 +298,8 @@
         
         .msg-submit-error {
             display: none;
+            font-size: 0.75em;
+            color: #ed0c00;
         }
         
         #progress-section {
@@ -363,6 +365,7 @@
                 generatedQuizHTML += '<div class="question-header">';
                 generatedQuizHTML += '<p class="question-heading">' + (i + 1) + '. ' + data.questions[i].q_heading + '</p>';
                 if (CheckForKeyNotEmpty(data.questions[i], 'q_subheading')) generatedQuizHTML += '<p class="question-sub-heading">' + data.questions[i].q_subheading + '</p>';
+                generatedQuizHTML += '<p class="msg-submit-error" id="msg-submit-error_q' + i + '">An answer has not been attempted. Please answer the question.</p>';
                 generatedQuizHTML += '</div>';
                 generatedQuizHTML += '<form id="q' + i + '_answer-section">';
                 generatedQuizHTML += '<ul class="answer-content">';
@@ -394,7 +397,6 @@
                 generatedQuizHTML += '<div class="question-footer" id="question-footer_q' + i + '">';
                 generatedQuizHTML += '<button class="btn-submit acuo-btn" id="btn-submit_q' + i + '" data-question-section="q' + i + '">Submit</button>';
                 generatedQuizHTML += '<button class="btn-next acuo-btn" id="btn-next_q' + i + '" data-question-section="q' + i + '">Next Question</button>';
-                generatedQuizHTML += '<p class="msg-submit-error" id="msg-submit-error_q' + i + '">An answer has not been attempted. Please answer the question.</p>';
                 generatedQuizHTML += '</div>';
                 generatedQuizHTML += '</div>';
 
@@ -496,7 +498,7 @@
                 }
                 var progressDots = document.querySelectorAll('#progress-section .progress-dots');
                 progressDots[currentQuestion].classList.add("current");
-                document.querySelector('.question-count').innerHTML = currentQuestion + "/" + results.length;
+                document.querySelector('.question-count').innerHTML = (currentQuestion + 1) + "/" + results.length;
 
             }
 
