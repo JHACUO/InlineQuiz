@@ -385,11 +385,12 @@
         var quizSections = null;
 
         var data_token = window.location.hash.substring(6);
-        console.log("data_token :" + data_token);
+        console.log("data_token : [" + data_token + "]");
 
         getQuestionData();
 
         async function getQuestionData() {
+            if (data_token == "") data_token = "https://raw.githubusercontent.com/JHACUO/InlineQuiz/feature/mcq_setup/data-test.json";
             const response = await fetch(data_token);
             console.log(response);
             const data = await response.json();
