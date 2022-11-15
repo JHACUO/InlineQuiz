@@ -554,6 +554,11 @@
                     quizSections[currentQuestion].classList.add("on");
                 } else {
                     //show results and reset
+
+                    document.getElementById("quiz-section").style.display = "none";
+                    document.getElementById("results-section").style.display = "block";
+
+
                 }
                 progressDots[currentQuestion].classList.add("current");
                 //document.querySelector('.question-count').innerHTML = 'Question ' + (currentQuestion + 1) + ' of ' + results.length;
@@ -577,6 +582,10 @@
                     progressDots[k].classList.remove("incorrect");
                 }
                 progressDots[currentQuestion].classList.remove("current");
+
+                document.getElementById("quiz-section").style.display = "block";
+                document.getElementById("results-section").style.display = "none";
+
             }
 
 
