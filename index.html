@@ -375,7 +375,9 @@
     </div>
 
     <div id="results-section">
-
+        <p>Quiz complete!</p>
+        <p></p>
+        <p>Select the button below to restart the quiz.</p>
         <button class="btn-restart acuo-btn">Restart</button>
     </div>
 
@@ -568,6 +570,13 @@
                 document.getElementById("progress-section").innerHTML = generatedProgressHTML;
                 quizSections = document.querySelectorAll('#quiz-section .question-section');
                 quizSections[currentQuestion].classList.add("on");
+                var progressDots = document.querySelectorAll('#progress-section .progress-dots');
+                for (k = 0; k < quizSections.length; k++) {
+                    progressDots[k].classList.remove("current");
+                    progressDots[k].classList.remove("correct");
+                    progressDots[k].classList.remove("incorrect");
+                }
+                progressDots[currentQuestion].classList.remove("current");
             }
 
 
