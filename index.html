@@ -277,6 +277,21 @@
             border: 2px solid #b9b9b9;
         }
         
+        .progress-dots.correct {
+            background-color: #c3e6cb;
+            border: 2px solid #abd5b4;
+        }
+        
+        .progress-dots.incorrect {
+            background-color: #f5c6cb;
+            border: 2px solid #e1b3b8;
+        }
+        
+        .progress-dots.current {
+            background-color: #ede6ed;
+            border: 2px solid #d0c0d9;
+        }
+        
         .question-count {
             margin: 0 5px;
         }
@@ -460,6 +475,13 @@
                 }
 
                 console.log("results" + results);
+                var quizResults = document.querySelectorAll('#progress-section .progress-dots');
+                for (p = 0; p < quizResults.length; p++) {
+                    quizResults[p].classList.remove("current");
+                    if (results[p] == "y") quizResults[p].classList.add("correct");
+                    if (results[p] == "n") quizResults[p].classList.add("incorrect");
+                }
+                quizResults[(currentQuestion + 1)].classList.add("current");
             }
 
 
