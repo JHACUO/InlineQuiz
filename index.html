@@ -280,6 +280,10 @@
         .question-count {
             margin: 0 5px;
         }
+        
+        .msg-submit-error {
+            display: none;
+        }
     </style>
 </head>
 
@@ -370,15 +374,17 @@
                 generatedQuizHTML += '</div>';
                 generatedQuizHTML += '</div>';
 
-                generatedProgressHTML += '<div class="progress">';
-                for (n = 0; n < length; n++) {
-                    generatedProgressHTML += '<div class="progress-dots"></div>';
-                }
-                generatedProgressHTML += '<p class="question-count">' + (i + 1) + '/' + length + '</p>';
-                generatedProgressHTML += '</div>';
                 //setup results array with ermpty answers
                 results.push("-");
             }
+            generatedProgressHTML += '<div class="progress">';
+            for (n = 0; n < length; n++) {
+                generatedProgressHTML += '<div class="progress-dots"></div>';
+            }
+            generatedProgressHTML += '<p class="question-count">' + (i + 1) + '/' + length + '</p>';
+            generatedProgressHTML += '</div>';
+
+
             document.getElementById("quiz-section").innerHTML = generatedQuizHTML;
             if (length > 1) document.getElementById("progress-section").innerHTML = generatedProgressHTML;
             quizSections = document.querySelectorAll('#quiz-section .question-section');
