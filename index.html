@@ -199,6 +199,11 @@
         
         .btn-submit-error {
             display: none;
+            background-color: #f8d7da;
+            padding: 7px;
+            border: 2px solid #f5c6cb;
+            border-radius: 5px;
+            font-size: 0.75em;
         }
         
         .inline-quiz .on {
@@ -265,10 +270,11 @@
         
         .progress-dots {
             background: #ccc;
-            width: 20px;
-            height: 20px;
+            width: 19px;
+            height: 19px;
             margin: 0 5px;
             border-radius: 50px;
+            border: 2px solid #b9b9b9;
         }
         
         .question-count {
@@ -293,34 +299,21 @@
 
     </div>
 
-    <div id="results-section">
-        <h2 id="quiz-title">Sample Quiz</h2>
-        <h3 id="results-heading">What is the answer?</h3>
-        <p id="results-sub-heading">Choose the correct answer below:</p>
-        <ul class="results-content">
-            <li class="results-item">
-                <p class="results-question-content">Q1</p>
-                <p class="results-answer-content">A1</p>
-            </li>
-            <li class="results-item">
-                <p class="results-question-content">Q2</p>
-                <p class="results-answer-content">A2</p>
-            </li>
-            <li class="results-item">
-                <p class="results-question-content">Q3</p>
-                <p class="results-answer-content">A3</p>
-            </li>
-        </ul>
+    <div id="progress-section">
 
     </div>
-    <button class="btn-restart acuo-btn">Restart</button>
+
+    <div id="results-section">
+
+        <button class="btn-restart acuo-btn">Restart</button>
+    </div>
 
     <script>
         console.log("loading...");
-        let text = "";
-        let fetchedData = false;
-        let currentQuestion = 0;
+        var results = null;
+        var currentQuestion = 0;
         var generatedQuizHTML = "";
+        var generatedProgressHTML = "";
         var quizSections = null;
 
         var model_token = window.location.hash.substring(7);
@@ -341,7 +334,7 @@
                 generatedQuizHTML += '<div class="question-section" id="question-section_q' + i + '">';
                 generatedQuizHTML += '<div class="question-header">';
                 generatedQuizHTML += '<p class="question-heading">' + (i + 1) + '. ' + data.questions[i].q_heading + '</p>';
-                // if (data.questions[i].q_subheading !== null && data.questions[i].q_subheading.trim() != "") generatedQuizHTML += '<p class="question-sub-heading">' + data.questions[i].q_subheading + '</p>';
+                if (CheckForKeyNotEmpty(data.questions[i], 'q_subheading')) generatedQuizHTML += '<p class="question-sub-heading">' + data.questions[i].q_subheading + '</p>';
                 generatedQuizHTML += '</div>';
                 generatedQuizHTML += '<form id="q' + i + '_answer-section">';
                 generatedQuizHTML += '<ul class="answer-content">';
@@ -349,7 +342,6 @@
                 for (j = 0; j < data.questions[i].q_answers.length; j++) {
                     generatedQuizHTML += '<li class="answer-item">';
                     generatedQuizHTML += '<input type="radio" id="q' + i + '_answer_' + j + '" name="answerblock" value="answer_' + j + '"';
-                    //if (correct.includes((j + 1))) generatedQuizHTML += ' data-status="y"';
                     if (correct == (j + 1)) generatedQuizHTML += ' data-answer="correct"';
                     else generatedQuizHTML += ' data-answer="incorrect"';
                     generatedQuizHTML += '>';
@@ -366,48 +358,44 @@
                 }
                 generatedQuizHTML += '</ul>';
                 generatedQuizHTML += '</form>';
+                generatedQuizHTML += '<div class="question-response-footer on" id="question-response-footer_q' + i + '">';
+                if (CheckForKeyNotEmpty(data.questions[i], 'f_correct')) generatedQuizHTML += '<p class="correct-response">' + data.questions[i].f_correct + '</p>';
+                if (CheckForKeyNotEmpty(data.questions[i], 'f_incorrect')) generatedQuizHTML += '<p class="incorrect-response">' + data.questions[i].f_incorrect + '</p>';
+                if (CheckForKeyNotEmpty(data.questions[i], 'f_general')) generatedQuizHTML += '<p class="general-response">' + data.questions[i].f_general + '</p>';
+                generatedQuizHTML += '</div>';
                 generatedQuizHTML += '<div class="question-footer" id="question-footer_q' + i + '">';
                 generatedQuizHTML += '<button class="btn-submit acuo-btn" id="btn-submit_q' + i + '" data-question-section="q' + i + '">Submit</button>';
                 generatedQuizHTML += '<button class="btn-next acuo-btn" id="btn-next_q' + i + '" data-question-section="q' + i + '">Next Question</button>';
-                generatedQuizHTML += '<p class="btn-submit-error" id="btn-submit-error_q' + i + '">An answer has not been attempted. Please answer the question.</p>';
-                generatedQuizHTML += '<div class="progress">';
+                generatedQuizHTML += '<p class="msg-submit-error" id="msg-submit-error_q' + i + '">An answer has not been attempted. Please answer the question.</p>';
+                generatedQuizHTML += '</div>';
+                generatedQuizHTML += '</div>';
+
+                generatedProgressHTML += '<div class="progress">';
                 for (n = 0; n < length; n++) {
-                    generatedQuizHTML += '<div class="progress-dots"></div>';
+                    generatedProgressHTML += '<div class="progress-dots"></div>';
                 }
-                generatedQuizHTML += '<p class="question-count">' + (i + 1) + '/' + length + '</p>';
-                generatedQuizHTML += '</div>';
-                generatedQuizHTML += '</div>';
-                generatedQuizHTML += '<div class="question-response-footer on" id="question-response-footer_q' + i + '">';
-                if (data.questions[i].hasOwnProperty('f_correct') && data.questions[i].f_correct.trim() != "") {
-                    generatedQuizHTML += '<p class="correct-response">' + data.questions[i].f_correct + '</p>';
-                    console.log("inline yes f_correct");
-                } else {
-                    console.log("inline no f_correct");
-                }
-                CheckForKeyNotEmpty(data.questions[i], 'f_correct');
-                // if (data.questions[i].f_incorrect !== null && data.questions[i].f_incorrect.trim() != "") generatedQuizHTML += '<p class="incorrect-response">' + data.questions[i].f_incorrect + '</p>';
-                // if (data.questions[i].f_general !== null && data.questions[i].f_general.trim() != "") generatedQuizHTML += '<p class="general-response">' + data.questions[i].f_general + '</p>';
-                generatedQuizHTML += '</div>';
-                generatedQuizHTML += '</div>';
+                generatedProgressHTML += '<p class="question-count">' + (i + 1) + '/' + length + '</p>';
+                generatedProgressHTML += '</div>';
+                //setup results array with ermpty answers
+                results.push("-");
             }
             document.getElementById("quiz-section").innerHTML = generatedQuizHTML;
+            if (length > 1) document.getElementById("progress-section").innerHTML = generatedProgressHTML;
             quizSections = document.querySelectorAll('#quiz-section .question-section');
             quizSections[currentQuestion].classList.add("on");
         }
 
         function CheckForKeyNotEmpty(data, key) {
+            //check for existence oif key in data and if it's also not empty
             var keyExistsAndViable = false;
             if (data.hasOwnProperty(key) && data.questions[i][key].trim() != "") {
                 keyExistsAndViable = true;
-                console.log("yes " + key);
-            } else {
-                console.log("no " + key);
             }
             return keyExistsAndViable;
         }
 
         document.addEventListener('click', function(e) {
-            //if (e.target && e.target.className == 'btn-submit') {
+
             if (e.target && e.target.classList.contains('btn-submit')) {
                 var currentQuizSection = e.target.getAttribute('data-question-section');
                 console.log("clicked submit - " + e.target.getAttribute('data-question-section'));
@@ -424,31 +412,42 @@
                         switch (quizAnswers[m].getAttribute("data-answer")) {
                             case 'correct':
                                 console.log("correct!!!");
+                                if (quizAnswers[m].checked == true)
+                                    results[currentQuestion] = "y";
+
                                 quizAnswers[m].parentElement.classList.add("show-answer-correct");
                                 //document.querySelector('#question-response-footer_' + currentQuizSection + ' .correct-response').classList.add("on");
 
                                 break;
                             case 'incorrect':
                                 console.log("incorrect");
-                                if (quizAnswers[m].checked == true)
+                                if (quizAnswers[m].checked == true) {
                                     quizAnswers[m].parentElement.classList.add("show-answer-incorrect");
+                                    results[currentQuestion] = "n";
+                                }
                                 //document.querySelector('#question-response-footer_' + currentQuizSection + ' .incorrect-response').classList.add("on");
                                 break;
                         }
 
                     }
+                    //turn off submit button
                     document.getElementById('btn-submit_' + currentQuizSection).style.display = "none";
+                    //turn on next button
                     document.getElementById('btn-next_' + currentQuizSection).style.display = "block";
+                    //hide error message once submit is pressed
+                    document.getElementById('msg-submit-error_q' + currentQuizSection).style.display = "none";
+
                     //document.getElementById("question-response-footer_" + currentQuizSection).classList.add("on");
                     //var isCorrect = document.querySelector('#question-section_' + currentQuizSection + ' input[name="answerblock"]:checked');
 
                 } else {
-                    console.log("empty");
-                    document.getElementById("btn-submit-error_" + currentQuizSection).classList.add("on");
+                    document.getElementById("btn-submit-error_" + currentQuizSection).style.display = "block";
                 }
+
+                console.log("results" + results);
             }
 
-            //if (e.target && e.target.className == 'btn-next') {
+
             if (e.target && e.target.classList.contains('btn-next')) {
                 console.log("clicked next - " + e.target.getAttribute('data-question-section'));
                 for (k = 0; k < quizSections.length; k++) {
@@ -461,13 +460,14 @@
 
             }
 
+
             //restart the quiz
             //set everything back to inital status
-            //if (e.target && e.target.className == 'btn-restart') {
             if (e.target && e.target.classList.contains('btn-restart')) {
                 console.log("clicked restart - ");
                 currentQuestion = 0;
                 document.getElementById("quiz-section").innerHTML = generatedQuizHTML;
+                document.getElementById("progress-section").innerHTML = generatedProgressHTML;
                 quizSections = document.querySelectorAll('#quiz-section .question-section');
                 quizSections[currentQuestion].classList.add("on");
             }
