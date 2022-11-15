@@ -399,6 +399,8 @@
             generatedQuizHTML += '<h2 class="quiz-title">' + 'Inline quiz' + '</h2>';
             for (i = 0; i < length; i++) {
                 generatedQuizHTML += '<div class="question-section" id="question-section_q' + i + '">';
+                generatedProgressHTML += '<p class="question-count">Question 1 of ' + length + '</p>';
+
                 generatedQuizHTML += '<div class="question-header">';
                 generatedQuizHTML += '<p class="question-heading">' + (i + 1) + '. ' + data.questions[i].q_heading + '</p>';
                 if (CheckForKeyNotEmpty(data.questions[i], 'q_subheading')) generatedQuizHTML += '<p class="question-sub-heading">' + data.questions[i].q_subheading + '</p>';
@@ -444,7 +446,7 @@
             for (n = 0; n < length; n++) {
                 generatedProgressHTML += '<div class="progress-dots"></div>';
             }
-            generatedProgressHTML += '<p class="question-count">1/' + length + '</p>';
+            generatedProgressHTML += '<p class="correct-count">0/' + length + '</p>';
             generatedProgressHTML += '</div>';
 
 
@@ -515,27 +517,35 @@
 
                 console.log("results" + results);
                 var quizResults = document.querySelectorAll('#progress-section .progress-dots');
+                var correctCount = 0;
                 for (p = 0; p < quizResults.length; p++) {
                     quizResults[p].classList.remove("current");
-                    if (results[p] == "y") quizResults[p].classList.add("correct");
+                    if (results[p] == "y") {
+                        quizResults[p].classList.add("correct");
+                        correctCount++;
+                    }
                     if (results[p] == "n") quizResults[p].classList.add("incorrect");
                 }
+                document.querySelector('.correct-count').innerHTML = correctCount + "/" + quizResults.length;
 
             }
 
 
             if (e.target && e.target.classList.contains('btn-next')) {
                 console.log("clicked next - " + e.target.getAttribute('data-question-section'));
+                var progressDots = document.querySelectorAll('#progress-section .progress-dots');
+                progressDots[currentQuestion].classList.add("current");
                 for (k = 0; k < quizSections.length; k++) {
                     quizSections[k].classList.remove("on");
                 }
                 if ((currentQuestion + 1) < quizSections.length) {
                     currentQuestion++;
                     quizSections[currentQuestion].classList.add("on");
+                } else {
+                    progressDots[currentQuestion].classList.remove("current");
+                    //show results and reset
                 }
-                var progressDots = document.querySelectorAll('#progress-section .progress-dots');
-                progressDots[currentQuestion].classList.add("current");
-                document.querySelector('.question-count').innerHTML = (currentQuestion + 1) + "/" + results.length;
+                document.querySelector('.question-count').innerHTML = 'Question ' + (currentQuestion + 1) + ' of ' + results.length;
 
             }
 
