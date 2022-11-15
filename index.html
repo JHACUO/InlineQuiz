@@ -380,6 +380,7 @@
         const results = [];
         var currentQuestion = 0;
         var generatedQuizHTML = "";
+        var generatedTotalHTML = "";
         var generatedProgressHTML = "";
         var quizSections = null;
 
@@ -399,8 +400,7 @@
             generatedQuizHTML += '<h2 class="quiz-title">' + 'Inline quiz' + '</h2>';
             for (i = 0; i < length; i++) {
                 generatedQuizHTML += '<div class="question-section" id="question-section_q' + i + '">';
-                generatedQuizHTML += '<p class="question-count">Question 1 of ' + length + '</p>';
-
+                generatedTotalHTML = '<p id="question-count" class="question-count">Question 1 of ' + length + '</p>';
                 generatedQuizHTML += '<div class="question-header">';
                 generatedQuizHTML += '<p class="question-heading">' + (i + 1) + '. ' + data.questions[i].q_heading + '</p>';
                 if (CheckForKeyNotEmpty(data.questions[i], 'q_subheading')) generatedQuizHTML += '<p class="question-sub-heading">' + data.questions[i].q_subheading + '</p>';
@@ -449,7 +449,7 @@
             generatedProgressHTML += '<p class="correct-count">0/' + length + '</p>';
             generatedProgressHTML += '</div>';
 
-
+            document.getElementById("question-count").innerHTML = generatedTotalHTML
             document.getElementById("quiz-section").innerHTML = generatedQuizHTML;
             if (length > 1) document.getElementById("progress-section").innerHTML = generatedProgressHTML;
             quizSections = document.querySelectorAll('#quiz-section .question-section');
