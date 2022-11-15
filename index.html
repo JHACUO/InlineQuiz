@@ -458,6 +458,10 @@
             if (length > 1) document.getElementById("progress-section").innerHTML = generatedProgressHTML;
             quizSections = document.querySelectorAll('#quiz-section .question-section');
             quizSections[currentQuestion].classList.add("on");
+
+            var progressDots = document.querySelectorAll('#progress-section .progress-dots');
+            progressDots[currentQuestion].classList.add("current");
+
             //document.getElementById("question-count").innerHTML = generatedTotalHTML;
         }
 
@@ -539,8 +543,8 @@
             if (e.target && e.target.classList.contains('btn-next')) {
                 console.log("clicked next - " + e.target.getAttribute('data-question-section'));
                 var progressDots = document.querySelectorAll('#progress-section .progress-dots');
-                progressDots[currentQuestion].classList.add("current");
                 for (k = 0; k < quizSections.length; k++) {
+                    progressDots[currentQuestion].classList.remove("current");
                     quizSections[k].classList.remove("on");
                 }
                 if ((currentQuestion + 1) < quizSections.length) {
@@ -549,7 +553,7 @@
                 } else {
                     //show results and reset
                 }
-                progressDots[currentQuestion].classList.remove("current");
+                progressDots[currentQuestion].classList.add("current");
                 //document.querySelector('.question-count').innerHTML = 'Question ' + (currentQuestion + 1) + ' of ' + results.length;
 
             }
