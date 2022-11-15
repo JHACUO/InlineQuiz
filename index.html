@@ -405,7 +405,7 @@
             for (n = 0; n < length; n++) {
                 generatedProgressHTML += '<div class="progress-dots"></div>';
             }
-            generatedProgressHTML += '<p class="question-count">' + (n + 1) + '/' + length + '</p>';
+            generatedProgressHTML += '<p class="question-count">1/' + length + '</p>';
             generatedProgressHTML += '</div>';
 
 
@@ -481,7 +481,7 @@
                     if (results[p] == "y") quizResults[p].classList.add("correct");
                     if (results[p] == "n") quizResults[p].classList.add("incorrect");
                 }
-                quizResults[(currentQuestion + 1)].classList.add("current");
+
             }
 
 
@@ -494,6 +494,9 @@
                     currentQuestion++;
                     quizSections[currentQuestion].classList.add("on");
                 }
+                var progressDots = document.querySelectorAll('#progress-section .progress-dots');
+                progressDots[currentQuestion].classList.add("current");
+                document.querySelector('.question-count').innerHTML = currentQuestion + "/" + results.length;
 
             }
 
