@@ -1,0 +1,30 @@
+{
+    "questions": [{
+            "q_heading": "You have a large amount of data held in files in Azure Data Lake storage. You want to retrieve the data in these files and use it to populate tables held in Azure Synapse Analytics. Which processing option is most appropriate?",
+            "q_correct": 3,
+            "q_answers": [
+                "Use Azure Synapse Link to connect to Azure Data Lake storage and download the data.",
+                "Synapse SQL pool.",
+                "Synapse Spark pool."
+            ]
+        },
+        {
+            "q_heading": "Which of the components of Azure Synapse Analytics allows you to train AI models using AzureML?",
+            "q_correct": 3,
+            "q_answers": [
+                "Synapse Studio.",
+                "Synapse Pipelines.",
+                "Synapse Spark."
+            ]
+        },
+        {
+            "q_heading": "In Azure Databricks how do you change the language a cell uses?",
+            "q_correct": 1,
+            "q_answers": [
+                "The first line in the cell is %language. For example, %scala.",
+                "Change the notebook language before writing the commands.",
+                "Wrap the command in the cell with ##language##."
+            ]
+        }
+    ]
+}

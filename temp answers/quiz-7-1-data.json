@@ -1,0 +1,30 @@
+{
+    "questions": [{
+            "q_heading": "When should you use Azure Synapse Analytics?",
+            "q_correct": 1,
+            "q_answers": [
+                "To perform very complex queries and aggregations.",
+                "To create dashboards from tabular data.",
+                "To enable large number of users to query analytics data"
+            ]
+        },
+        {
+            "q_heading": "What is the purpose of data ingestion?",
+            "q_correct": 2,
+            "q_answers": [
+                "To perform complex data transformations over data received from external sources.",
+                "To capture data flowing into a data warehouse system as quickly as possible.",
+                "To visualize the results of data analysis."
+            ]
+        },
+        {
+            "q_heading": "What is the primary difference between a data lake and a data warehouse?",
+            "q_correct": 2,
+            "q_answers": [
+                "A data lake contains structured information, but a data warehouse holds raw business data.",
+                "A data lake holds raw data, but a data warehouse holds structured information.",
+                "Data stored in a data lake is dynamic, but information stored in a data warehouse is static."
+            ]
+        }
+    ]
+}

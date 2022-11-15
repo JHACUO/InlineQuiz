@@ -1,0 +1,30 @@
+{
+    "questions": [{
+            "q_heading": "Which component of an Azure Data Factory can be triggered to run data ingestion tasks?",
+            "q_correct": 2,
+            "q_answers": [
+                "CSV File.",
+                "Pipeline.",
+                "Linked service."
+            ]
+        },
+        {
+            "q_heading": "When might you use PolyBase?",
+            "q_correct": 1,
+            "q_answers": [
+                "To query data from external data sources from Azure SQL Database.",
+                "To ingest streaming data using Azure Databricks.",
+                "To orchestrate activities in Azure Data Factory."
+            ]
+        },
+        {
+            "q_heading": "Which of these services can be used to ingest data into Azure Synapse Analytics?",
+            "q_correct": 1,
+            "q_answers": [
+                "Azure Data Factory.",
+                "Power BI.",
+                "Azure Active Directory."
+            ]
+        }
+    ]
+}

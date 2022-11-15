@@ -1,0 +1,48 @@
+{
+    "questions": [{
+            "q_heading": "Which deployment requires the fewest changes when migrating an existing SQL Server on-premises solution?",
+            "q_correct": 2,
+            "q_answers": [
+                "Azure SQL Database Managed Instance.",
+                "SQL Server running on a virtual machine.",
+                "Azure SQL Database Single Database."
+            ]
+        },
+        {
+            "q_heading": "Which of the following statements is true about SQL Server running on a virtual machine?",
+            "q_correct": 3,
+            "q_answers": [
+                "You must install and maintain the software for the database management system yourself, but backups are automated.",
+                "Software installation and maintenance are automated, but you must do your own backups.",
+                "You’re responsible for all software installation and maintenance, and performing back ups."
+            ]
+        },
+        {
+            "q_heading": "Which of the following statement is true about Azure SQL Database?",
+            "q_correct": 3,
+            "q_answers": [
+                "Scaling up doesn’t take effect until you restart the database.",
+                "Scaling out doesn’t take effect until you restart the database.",
+                "Scaling up or out will take effect without restarting the SQL database."
+            ]
+        },
+        {
+            "q_heading": "When using an Azure SQL Database managed instance, what is the simplest way to implement backups?",
+            "q_correct": 3,
+            "q_answers": [
+                "Manual Configuration of the SQL server.",
+                "Create a scheduled task to back up.",
+                "Backups are automatically handled."
+            ]
+        },
+        {
+            "q_heading": "What is the best way to transfer the data in a PostgreSQL database running on-premises into a database running Azure Database for PostgreSQL service?",
+            "q_correct": 3,
+            "q_answers": [
+                "Export the data from the on-premises database and import it manually into the database running in Azure.",
+                "Upload a PostgreSQL database backup file to the database running in Azure.",
+                "Use the Azure Database Migration Services."
+            ]
+        }
+    ]
+}

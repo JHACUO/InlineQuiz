@@ -1,0 +1,30 @@
+{
+    "questions": [{
+            "q_heading": "What is provisioning?",
+            "q_correct": 1,
+            "q_answers": [
+                "The act of running series of tasks that a service provider performs to create and configure a service.",
+                "Providing other users access to an existing service.",
+                "Tuning a service to improve performance."
+            ]
+        },
+        {
+            "q_heading": "What is a security principal?",
+            "q_correct": 3,
+            "q_answers": [
+                "A named collection of permissions that can be granted to a service, such as the ability to use the service to read, write, and delete data. In Azure, examples include Owner and Contributor.",
+                "A set of resources managed by a service to which you can grant access.",
+                "An object that represents a user, group, service, or managed identity that is requesting access to Azure resources."
+            ]
+        },
+        {
+            "q_heading": "Which of the following is an advantage of using multi-region replication with Cosmos DB?",
+            "q_correct": 2,
+            "q_answers": [
+                "_Data will always be consistent in every region.",
+                "Availability is increased.",
+                "Increased security for your data."
+            ]
+        }
+    ]
+}

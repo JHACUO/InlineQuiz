@@ -1,0 +1,39 @@
+{
+    "questions": [{
+            "q_heading": "What are the elements of an Azure Table storage key?",
+            "q_correct": 2,
+            "q_answers": [
+                "Table name and column name.",
+                "Partition key and row key.",
+                "Row number."
+            ]
+        },
+        {
+            "q_heading": "When should you use a block blob, and when should you use a page blob?",
+            "q_correct": 3,
+            "q_answers": [
+                "Use a block blob for unstructured data that requires random access to perform reads and writes. Use a page blob for discrete objects that rarely change.",
+                "Use a block blob for active data stored using the Hot data access tier, and a page blob for data stored using the Cool or Archive data access tiers.",
+                "Use a page block for blobs that require random read and write access. Use a block blob for discrete objects that change infrequently."
+            ]
+        },
+        {
+            "q_heading": "Why might you use Azure File storage?",
+            "q_correct": 2,
+            "q_answers": [
+                "To share files that are stored on-premises with users located at other sites.",
+                "To enable users at different sites to share files.",
+                "To store large binary data files containing images or other unstructured data."
+            ]
+        },
+        {
+            "q_heading": "You are building a system that monitors the temperature throughout a set of office blocks, and sets the air conditioning in each room in each block to maintain a pleasant ambient temperature. Your system has to manage the air conditioning in several thousand buildings spread across the country/region, and each building typically contains at least 100 air-conditioned rooms. What type of NoSQL data store is most appropriate for capturing the temperature data to enable it to be processed quickly?",
+            "q_correct": 1,
+            "q_answers": [
+                "Send the data to an Azure Cosmos DB database and use Azure Functions to process the data.",
+                "Store the data in a file stored in a share created using Azure File Storage.",
+                "Write the temperatures to a blob in Azure Blob storage."
+            ]
+        }
+    ]
+}

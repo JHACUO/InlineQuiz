@@ -399,7 +399,7 @@
             var correct;
 
             generatedTotalHTML = '<p id="question-count" class="question-count">Question 1 of ' + length + '</p>';
-            generatedQuizHTML += '<h2 class="quiz-title">' + 'Inline quiz' + '</h2>';
+            //generatedQuizHTML += '<h2 class="quiz-title">' + 'Quiz' + '</h2>';
             for (i = 0; i < length; i++) {
                 generatedQuizHTML += '<div class="question-section" id="question-section_q' + i + '">';
                 generatedQuizHTML += '<div class="question-header">';
@@ -454,7 +454,7 @@
             if (length > 1) document.getElementById("progress-section").innerHTML = generatedProgressHTML;
             quizSections = document.querySelectorAll('#quiz-section .question-section');
             quizSections[currentQuestion].classList.add("on");
-            document.getElementById("question-count").innerHTML = generatedTotalHTML;
+            //document.getElementById("question-count").innerHTML = generatedTotalHTML;
         }
 
         function CheckForKeyNotEmpty(data, key) {
