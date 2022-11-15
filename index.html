@@ -375,8 +375,9 @@
     </div>
 
     <div id="results-section">
-        <p>Quiz complete!</p>
-        <p></p>
+        <h2>Quiz complete!</h2>
+        <h3>Your results:</h3>
+        <p id="total-result"></p>
         <p>Select the button below to restart the quiz.</p>
         <button class="btn-restart acuo-btn">Restart</button>
     </div>
@@ -540,6 +541,7 @@
                     if (results[p] == "n") quizResults[p].classList.add("incorrect");
                 }
                 document.querySelector('.correct-count').innerHTML = correctCount + "/" + quizResults.length;
+                document.getElementById("total-result").innerHTML = "You have answered " + correctCount + " out of " + quizResults.length + " question(s) correct.";
 
             }
 
