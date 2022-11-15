@@ -404,7 +404,7 @@
             length = data.questions.length;
             var correct;
 
-            generatedTotalHTML += '<p id="question-count" class="question-count">Question 1 of ' + length + '</p>';
+            generatedQuizHTML += '<p id="question-count" class="question-count">Question 1 of ' + length + '</p>';
             //generatedQuizHTML += '<h2 class="quiz-title">' + 'Quiz' + '</h2>';
             for (i = 0; i < length; i++) {
                 generatedQuizHTML += '<div class="question-section" id="question-section_q' + i + '">';
@@ -564,7 +564,7 @@
 
                 }
                 progressDots[currentQuestion].classList.add("current");
-                //document.querySelector('.question-count').innerHTML = 'Question ' + (currentQuestion + 1) + ' of ' + results.length;
+                document.querySelector('.question-count').innerHTML = 'Question ' + (currentQuestion + 1) + ' of ' + results.length;
 
             }
 
