@@ -383,13 +383,13 @@
         var generatedProgressHTML = "";
         var quizSections = null;
 
-        var model_token = window.location.hash.substring(7);
-        console.log("model_token :" + model_token);
+        var data_token = window.location.hash.substring(6);
+        console.log("data_token :" + data_token);
 
         getQuestionData();
 
         async function getQuestionData() {
-            const response = await fetch('https://raw.githubusercontent.com/JHACUO/InlineQuiz/feature/mcq_setup/data-test.json');
+            const response = await fetch(data_token);
             console.log(response);
             const data = await response.json();
             console.log(data);
@@ -399,7 +399,7 @@
             generatedQuizHTML += '<h2 class="quiz-title">' + 'Inline quiz' + '</h2>';
             for (i = 0; i < length; i++) {
                 generatedQuizHTML += '<div class="question-section" id="question-section_q' + i + '">';
-                generatedProgressHTML += '<p class="question-count">Question 1 of ' + length + '</p>';
+                generatedQuizHTML += '<p class="question-count">Question 1 of ' + length + '</p>';
 
                 generatedQuizHTML += '<div class="question-header">';
                 generatedQuizHTML += '<p class="question-heading">' + (i + 1) + '. ' + data.questions[i].q_heading + '</p>';
