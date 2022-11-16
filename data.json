@@ -3,7 +3,7 @@
             "q_heading": "Q1 question heading",
             "q_correct": 1,
             "q_answers": [
-                "answer 1",
+                "*answer 1*",
                 "answer 2",
                 "answer 3",
                 "answer 4"
@@ -16,7 +16,7 @@
             "q_correct": 2,
             "q_answers": [
                 "answer 1",
-                "answer 2",
+                "*answer 2*",
                 "answer 3",
                 "answer 4"
             ],
@@ -29,7 +29,7 @@
             "q_answers": [
                 "answer 1",
                 "answer 2",
-                "answer 3",
+                "*answer 3*",
                 "answer 4"
             ],
             "f_correct": "Q3 Correct feedback, show if answer is right",
@@ -42,7 +42,7 @@
                 "answer 1",
                 "answer 2",
                 "answer 3",
-                "answer 4"
+                "*answer 4*"
             ],
             "f_correct": "Q4 Correct feedback, show if answer is right",
             "f_incorrect": "Q4 Incorrect feedback, show if answer is wrong"

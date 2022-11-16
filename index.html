@@ -399,82 +399,82 @@
         getQuestionData();
 
         async function getQuestionData() {
-            if (data_token != "") {
-                data_token = "https://raw.githubusercontent.com/JHACUO/InlineQuiz/feature/mcq_setup/data.json";
-                const response = await fetch(data_token);
-                console.log(response);
-                const data = await response.json();
-                console.log(data);
-                length = data.questions.length;
-                var correct;
+            //if (data_token != "") {
+            //data_token = "https://raw.githubusercontent.com/JHACUO/InlineQuiz/feature/mcq_setup/data.json";
+            const response = await fetch("https://raw.githubusercontent.com/JHACUO/InlineQuiz/feature/mcq_setup/data.json");
+            console.log(response);
+            const data = await response.json();
+            console.log(data);
+            length = data.questions.length;
+            var correct;
 
-                generatedQuizHTML += '<h2 class="quiz-title">' + 'Quiz' + '</h2>';
-                generatedQuizHTML += '<p id="question-count" class="question-count">Question 1 of ' + length + '</p>';
-                for (i = 0; i < length; i++) {
-                    generatedQuizHTML += '<div class="question-section" id="question-section_q' + i + '">';
-                    generatedQuizHTML += '<div class="question-header">';
-                    generatedQuizHTML += '<p class="question-heading">' + (i + 1) + '. ' + data.questions[i].q_heading + '</p>';
-                    if (CheckForKeyNotEmpty(data.questions[i], 'q_subheading')) generatedQuizHTML += '<p class="question-sub-heading">' + data.questions[i].q_subheading + '</p>';
-                    generatedQuizHTML += '<p class="msg-submit-error" id="msg-submit-error_q' + i + '">An answer has not been attempted. Please answer the question.</p>';
-                    generatedQuizHTML += '</div>';
-                    generatedQuizHTML += '<form id="q' + i + '_answer-section">';
-                    generatedQuizHTML += '<ul class="answer-content">';
-                    correct = data.questions[i].q_correct;
-                    for (j = 0; j < data.questions[i].q_answers.length; j++) {
-                        generatedQuizHTML += '<li class="answer-item">';
-                        generatedQuizHTML += '<input type="radio" id="q' + i + '_answer_' + j + '" name="answerblock" value="answer_' + j + '"';
-                        if (correct == (j + 1)) generatedQuizHTML += ' data-answer="correct"';
-                        else generatedQuizHTML += ' data-answer="incorrect"';
-                        generatedQuizHTML += '>';
-                        generatedQuizHTML += '<label for="q' + i + '_answer_' + j + '">' + data.questions[i].q_answers[j] + '</label>';
-                        generatedQuizHTML += '<div class="check"><div class="inside"></div></div>';
+            generatedQuizHTML += '<h2 class="quiz-title">' + 'Quiz' + '</h2>';
+            generatedQuizHTML += '<p id="question-count" class="question-count">Question 1 of ' + length + '</p>';
+            for (i = 0; i < length; i++) {
+                generatedQuizHTML += '<div class="question-section" id="question-section_q' + i + '">';
+                generatedQuizHTML += '<div class="question-header">';
+                generatedQuizHTML += '<p class="question-heading">' + (i + 1) + '. ' + data.questions[i].q_heading + '</p>';
+                if (CheckForKeyNotEmpty(data.questions[i], 'q_subheading')) generatedQuizHTML += '<p class="question-sub-heading">' + data.questions[i].q_subheading + '</p>';
+                generatedQuizHTML += '<p class="msg-submit-error" id="msg-submit-error_q' + i + '">An answer has not been attempted. Please answer the question.</p>';
+                generatedQuizHTML += '</div>';
+                generatedQuizHTML += '<form id="q' + i + '_answer-section">';
+                generatedQuizHTML += '<ul class="answer-content">';
+                correct = data.questions[i].q_correct;
+                for (j = 0; j < data.questions[i].q_answers.length; j++) {
+                    generatedQuizHTML += '<li class="answer-item">';
+                    generatedQuizHTML += '<input type="radio" id="q' + i + '_answer_' + j + '" name="answerblock" value="answer_' + j + '"';
+                    if (correct == (j + 1)) generatedQuizHTML += ' data-answer="correct"';
+                    else generatedQuizHTML += ' data-answer="incorrect"';
+                    generatedQuizHTML += '>';
+                    generatedQuizHTML += '<label for="q' + i + '_answer_' + j + '">' + data.questions[i].q_answers[j] + '</label>';
+                    generatedQuizHTML += '<div class="check"><div class="inside"></div></div>';
 
 
-                        generatedQuizHTML += '<div class="answered-status">';
-                        generatedQuizHTML += '<div class="correct">Correct!</div>';
-                        generatedQuizHTML += '<div class="incorrect">Incorrect</div>';
-                        generatedQuizHTML += '</div>';
-
-                        generatedQuizHTML += '</li>';
-                    }
-                    generatedQuizHTML += '</ul>';
-                    generatedQuizHTML += '</form>';
-                    generatedQuizHTML += '<div class="question-response-footer on" id="question-response-footer_q' + i + '">';
-                    if (CheckForKeyNotEmpty(data.questions[i], 'f_correct')) generatedQuizHTML += '<p class="correct-response">' + data.questions[i].f_correct + '</p>';
-                    if (CheckForKeyNotEmpty(data.questions[i], 'f_incorrect')) generatedQuizHTML += '<p class="incorrect-response">' + data.questions[i].f_incorrect + '</p>';
-                    if (CheckForKeyNotEmpty(data.questions[i], 'f_general')) generatedQuizHTML += '<p class="general-response">' + data.questions[i].f_general + '</p>';
-                    generatedQuizHTML += '</div>';
-                    generatedQuizHTML += '<div class="question-footer" id="question-footer_q' + i + '">';
-                    generatedQuizHTML += '<button class="btn-submit acuo-btn" id="btn-submit_q' + i + '" data-question-section="q' + i + '">Submit</button>';
-                    generatedQuizHTML += '<button class="btn-next acuo-btn" id="btn-next_q' + i + '" data-question-section="q' + i + '">Next Question</button>';
-                    generatedQuizHTML += '</div>';
+                    generatedQuizHTML += '<div class="answered-status">';
+                    generatedQuizHTML += '<div class="correct">Correct!</div>';
+                    generatedQuizHTML += '<div class="incorrect">Incorrect</div>';
                     generatedQuizHTML += '</div>';
 
-                    //setup results array with ermpty answers
-                    results.push("-");
+                    generatedQuizHTML += '</li>';
                 }
-                generatedProgressHTML += '<div class="progress">';
-                for (n = 0; n < length; n++) {
-                    generatedProgressHTML += '<div class="progress-dots"></div>';
-                }
-                generatedProgressHTML += '<p class="correct-count">0/' + length + '</p>';
-                generatedProgressHTML += '</div>';
+                generatedQuizHTML += '</ul>';
+                generatedQuizHTML += '</form>';
+                generatedQuizHTML += '<div class="question-response-footer on" id="question-response-footer_q' + i + '">';
+                if (CheckForKeyNotEmpty(data.questions[i], 'f_correct')) generatedQuizHTML += '<p class="correct-response">' + data.questions[i].f_correct + '</p>';
+                if (CheckForKeyNotEmpty(data.questions[i], 'f_incorrect')) generatedQuizHTML += '<p class="incorrect-response">' + data.questions[i].f_incorrect + '</p>';
+                if (CheckForKeyNotEmpty(data.questions[i], 'f_general')) generatedQuizHTML += '<p class="general-response">' + data.questions[i].f_general + '</p>';
+                generatedQuizHTML += '</div>';
+                generatedQuizHTML += '<div class="question-footer" id="question-footer_q' + i + '">';
+                generatedQuizHTML += '<button class="btn-submit acuo-btn" id="btn-submit_q' + i + '" data-question-section="q' + i + '">Submit</button>';
+                generatedQuizHTML += '<button class="btn-next acuo-btn" id="btn-next_q' + i + '" data-question-section="q' + i + '">Next Question</button>';
+                generatedQuizHTML += '</div>';
+                generatedQuizHTML += '</div>';
 
-                document.getElementById("quiz-section").innerHTML = generatedQuizHTML;
-                document.getElementById("progress-section").innerHTML = generatedProgressHTML;
-                if (length < 2) document.getElementById("progress-section").style.display = "none";
-
-                quizSections = document.querySelectorAll('#quiz-section .question-section');
-                quizSections[currentQuestion].classList.add("on");
-
-                var progressDots = document.querySelectorAll('#progress-section .progress-dots');
-                progressDots[currentQuestion].classList.add("current");
-
-                //document.getElementById("question-count").innerHTML = generatedTotalHTML;
-            } else {
-                document.getElementById('error-section').style.display = "block";
-
+                //setup results array with ermpty answers
+                results.push("-");
             }
+            generatedProgressHTML += '<div class="progress">';
+            for (n = 0; n < length; n++) {
+                generatedProgressHTML += '<div class="progress-dots"></div>';
+            }
+            generatedProgressHTML += '<p class="correct-count">0/' + length + '</p>';
+            generatedProgressHTML += '</div>';
+
+            document.getElementById("quiz-section").innerHTML = generatedQuizHTML;
+            document.getElementById("progress-section").innerHTML = generatedProgressHTML;
+            if (length < 2) document.getElementById("progress-section").style.display = "none";
+
+            quizSections = document.querySelectorAll('#quiz-section .question-section');
+            quizSections[currentQuestion].classList.add("on");
+
+            var progressDots = document.querySelectorAll('#progress-section .progress-dots');
+            progressDots[currentQuestion].classList.add("current");
+
+            //document.getElementById("question-count").innerHTML = generatedTotalHTML;
+            // } else {
+            //     document.getElementById('error-section').style.display = "block";
+
+            // }
         }
 
         function CheckForKeyNotEmpty(data, key) {
