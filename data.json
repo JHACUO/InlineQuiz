@@ -1,47 +1,51 @@
 {
     "questions": [{
-            "q_heading": "question heading",
-            "q_subheading": "question subheading",
+            "q_heading": "Q1 question heading",
             "q_correct": 1,
             "q_answers": [
                 "answer 1",
                 "answer 2",
                 "answer 3",
                 "answer 4"
-            ]
+            ],
+            "f_correct": "Q1 Correct feedback, show if answer is right",
+            "f_incorrect": "Q1 Incorrect feedback, show if answer is wrong"
         },
         {
-            "q_heading": "question heading",
-            "q_subheading": "question subheading",
+            "q_heading": "Q2 question heading",
             "q_correct": 2,
             "q_answers": [
                 "answer 1",
                 "answer 2",
                 "answer 3",
                 "answer 4"
-            ]
+            ],
+            "f_correct": "Q2 Correct feedback, show if answer is right",
+            "f_incorrect": "Q2 Incorrect feedback, show if answer is wrong"
         },
         {
-            "q_heading": "question heading",
-            "q_subheading": "question subheading",
+            "q_heading": "Q3 question heading",
             "q_correct": 3,
             "q_answers": [
                 "answer 1",
                 "answer 2",
                 "answer 3",
                 "answer 4"
-            ]
+            ],
+            "f_correct": "Q3 Correct feedback, show if answer is right",
+            "f_incorrect": "Q3 Incorrect feedback, show if answer is wrong"
         },
         {
-            "q_heading": "question heading",
-            "q_subheading": "question subheading",
+            "q_heading": "Q4  question heading",
             "q_correct": 4,
             "q_answers": [
                 "answer 1",
                 "answer 2",
                 "answer 3",
                 "answer 4"
-            ]
+            ],
+            "f_correct": "Q4 Correct feedback, show if answer is right",
+            "f_incorrect": "Q4 Incorrect feedback, show if answer is wrong"
         }
     ]
 }

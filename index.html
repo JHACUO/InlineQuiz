@@ -400,7 +400,7 @@
 
         async function getQuestionData() {
             if (data_token != "") {
-                data_token = "https://raw.githubusercontent.com/JHACUO/InlineQuiz/feature/mcq_setup/data-all.json";
+                data_token = "https://raw.githubusercontent.com/JHACUO/InlineQuiz/feature/mcq_setup/data.json";
                 const response = await fetch(data_token);
                 console.log(response);
                 const data = await response.json();
