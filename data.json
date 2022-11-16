@@ -24,7 +24,7 @@
             "f_incorrect": "Q2 Incorrect feedback, show if answer is wrong"
         },
         {
-            "q_heading": "Q3 question heading",
+            "q_heading": "Q3 question heading only correct feedback",
             "q_correct": 3,
             "q_answers": [
                 "answer 1",
@@ -32,11 +32,10 @@
                 "*answer 3*",
                 "answer 4"
             ],
-            "f_correct": "Q3 Correct feedback, show if answer is right",
-            "f_incorrect": "Q3 Incorrect feedback, show if answer is wrong"
+            "f_correct": "Q3 Correct feedback, show if answer is right"
         },
         {
-            "q_heading": "Q4  question heading",
+            "q_heading": "Q4  question heading, only incorrect feedback",
             "q_correct": 4,
             "q_answers": [
                 "answer 1",
@@ -44,7 +43,6 @@
                 "answer 3",
                 "*answer 4*"
             ],
-            "f_correct": "Q4 Correct feedback, show if answer is right",
             "f_incorrect": "Q4 Incorrect feedback, show if answer is wrong"
         }
     ]
