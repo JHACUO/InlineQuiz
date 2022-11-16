@@ -1,15 +1,13 @@
 {
     "questions": [{
-            "q_heading": "Q1 question heading",
+            "q_heading": "Q1 question heading, no feedback",
             "q_correct": 1,
             "q_answers": [
                 "*answer 1*",
                 "answer 2",
                 "answer 3",
                 "answer 4"
-            ],
-            "f_correct": "Q1 Correct feedback, show if answer is right",
-            "f_incorrect": "Q1 Incorrect feedback, show if answer is wrong"
+            ]
         },
         {
             "q_heading": "Q2 question heading",
