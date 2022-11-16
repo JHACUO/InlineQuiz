@@ -366,7 +366,7 @@
             display: none;
         }
         
-        .question-response-footer>p {
+        .question-response-footer>div {
             display: none;
         }
         
@@ -471,16 +471,16 @@
                 generatedQuizHTML += '</form>';
                 generatedQuizHTML += '<div class="question-response-footer" id="question-response-footer_q' + i + '">';
                 if (CheckForKeyNotEmpty(data.questions[i], 'f_correct')) {
-                    generatedQuizHTML += '<p class="feedback-correct">';
+                    generatedQuizHTML += '<div class="feedback-correct">';
                     generatedQuizHTML += '<p><strong>Correct feedback:</strong></p>';
                     generatedQuizHTML += '<p>' + data.questions[i].f_correct + '</p>';
-                    generatedQuizHTML += '</p>';
+                    generatedQuizHTML += '</div>';
                 }
                 if (CheckForKeyNotEmpty(data.questions[i], 'f_incorrect')) {
-                    generatedQuizHTML += '<p class="feedback-incorrect">';
+                    generatedQuizHTML += '<div class="feedback-incorrect">';
                     generatedQuizHTML += '<p><strong>Incorrect feedback:</strong></p>';
                     generatedQuizHTML += '<p>' + data.questions[i].f_incorrect + '</p>';
-                    generatedQuizHTML += '</p>';
+                    generatedQuizHTML += '</div>';
                 }
                 generatedQuizHTML += '</div>';
                 generatedQuizHTML += '<div class="question-footer" id="question-footer_q' + i + '">';
