@@ -442,7 +442,6 @@
                 generatedQuizHTML += '<div class="question-response-footer on" id="question-response-footer_q' + i + '">';
                 if (CheckForKeyNotEmpty(data.questions[i], 'f_correct')) generatedQuizHTML += '<p class="correct-response">' + data.questions[i].f_correct + '</p>';
                 if (CheckForKeyNotEmpty(data.questions[i], 'f_incorrect')) generatedQuizHTML += '<p class="incorrect-response">' + data.questions[i].f_incorrect + '</p>';
-                if (CheckForKeyNotEmpty(data.questions[i], 'f_general')) generatedQuizHTML += '<p class="general-response">' + data.questions[i].f_general + '</p>';
                 generatedQuizHTML += '</div>';
                 generatedQuizHTML += '<div class="question-footer" id="question-footer_q' + i + '">';
                 generatedQuizHTML += '<button class="btn-submit acuo-btn" id="btn-submit_q' + i + '" data-question-section="q' + i + '">Submit</button>';
@@ -477,10 +476,10 @@
             // }
         }
 
-        function CheckForKeyNotEmpty(data, key) {
+        function CheckForKeyNotEmpty(dataCol, key) {
             //check for existence oif key in data and if it's also not empty
             var keyExistsAndViable = false;
-            if (data.hasOwnProperty(key) && data.questions[i][key].trim() != "") {
+            if (dataCol.hasOwnProperty(key) && dataCol[key].trim() != "") {
                 keyExistsAndViable = true;
             }
             return keyExistsAndViable;
