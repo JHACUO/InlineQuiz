@@ -359,6 +359,36 @@
             margin-top: 1em;
             margin-right: 0.5em;
         }
+        
+        .question-response-footer {
+            margin: 3em 0.5em;
+            padding: 0.5em 1em;
+            display: none;
+        }
+        
+        .question-response-footer>p {
+            display: none;
+        }
+        
+        .question-response-footer.show-answer-correct {
+            display: block;
+            background-color: #e8ffed;
+            border: 2px solid #c3e6cb;
+        }
+        
+        .question-response-footer.show-answer-correct .feedback-correct {
+            display: block;
+        }
+        
+        .question-response-footer.show-answer-incorrect {
+            display: block;
+            border: 2px solid #f5c6cb;
+            background-color: #ffe9eb;
+        }
+        
+        .question-response-footer.show-answer-correct .feedback-incorrect {
+            display: block;
+        }
     </style>
 </head>
 
@@ -439,9 +469,9 @@
                 }
                 generatedQuizHTML += '</ul>';
                 generatedQuizHTML += '</form>';
-                generatedQuizHTML += '<div class="question-response-footer on" id="question-response-footer_q' + i + '">';
-                if (CheckForKeyNotEmpty(data.questions[i], 'f_correct')) generatedQuizHTML += '<p class="correct-response">' + data.questions[i].f_correct + '</p>';
-                if (CheckForKeyNotEmpty(data.questions[i], 'f_incorrect')) generatedQuizHTML += '<p class="incorrect-response">' + data.questions[i].f_incorrect + '</p>';
+                generatedQuizHTML += '<div class="question-response-footer" id="question-response-footer_q' + i + '">';
+                if (CheckForKeyNotEmpty(data.questions[i], 'f_correct')) generatedQuizHTML += '<p id="feedback-correct_q' + i + '" class="feedback-correct"><p><strong>Correct feedback:</strong></p><p>' + data.questions[i].f_correct + '</p></p>';
+                if (CheckForKeyNotEmpty(data.questions[i], 'f_incorrect')) generatedQuizHTML += '<p id="feedback-incorrect_q' + i + '" class="feedback-incorrect"><p><strong>Incorrect feedback:</strong></p><p>' + data.questions[i].f_incorrect + '</p></p>';
                 generatedQuizHTML += '</div>';
                 generatedQuizHTML += '<div class="question-footer" id="question-footer_q' + i + '">';
                 generatedQuizHTML += '<button class="btn-submit acuo-btn" id="btn-submit_q' + i + '" data-question-section="q' + i + '">Submit</button>';
@@ -507,6 +537,7 @@
                                     results[currentQuestion] = "y";
 
                                 quizAnswers[m].parentElement.classList.add("show-answer-correct");
+                                document.getElementById("question-response-footer_" + currentQuizSection).classList.add("show-answer-correct");
                                 //document.querySelector('#question-response-footer_' + currentQuizSection + ' .correct-response').classList.add("on");
 
                                 break;
@@ -514,6 +545,7 @@
                                 console.log("incorrect");
                                 if (quizAnswers[m].checked == true) {
                                     quizAnswers[m].parentElement.classList.add("show-answer-incorrect");
+                                    document.getElementById("question-response-footer_" + currentQuizSection).classList.add("show-answer-correct");
                                     results[currentQuestion] = "n";
                                 }
                                 //document.querySelector('#question-response-footer_' + currentQuizSection + ' .incorrect-response').classList.add("on");
