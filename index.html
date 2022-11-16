@@ -533,11 +533,11 @@
                         switch (quizAnswers[m].getAttribute("data-answer")) {
                             case 'correct':
                                 console.log("correct!!!");
-                                if (quizAnswers[m].checked == true)
+                                if (quizAnswers[m].checked == true) {
                                     results[currentQuestion] = "y";
-
+                                    document.getElementById("question-response-footer_" + currentQuizSection).classList.add("show-answer-correct");
+                                }
                                 quizAnswers[m].parentElement.classList.add("show-answer-correct");
-                                document.getElementById("question-response-footer_" + currentQuizSection).classList.add("show-answer-correct");
                                 //document.querySelector('#question-response-footer_' + currentQuizSection + ' .correct-response').classList.add("on");
 
                                 break;
@@ -545,7 +545,7 @@
                                 console.log("incorrect");
                                 if (quizAnswers[m].checked == true) {
                                     quizAnswers[m].parentElement.classList.add("show-answer-incorrect");
-                                    document.getElementById("question-response-footer_" + currentQuizSection).classList.add("show-answer-correct");
+                                    document.getElementById("question-response-footer_" + currentQuizSection).classList.add("show-answer-incorrect");
                                     results[currentQuestion] = "n";
                                 }
                                 //document.querySelector('#question-response-footer_' + currentQuizSection + ' .incorrect-response').classList.add("on");
