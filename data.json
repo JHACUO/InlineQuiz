@@ -10,7 +10,7 @@
             ]
         },
         {
-            "q_heading": "Q2 question heading",
+            "q_heading": "Q2 question heading, both correct and incorrect feedback",
             "q_correct": 2,
             "q_answers": [
                 "answer 1",
