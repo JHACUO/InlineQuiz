@@ -363,15 +363,10 @@
 </head>
 
 <body class="inline-quiz">
-    <div id="reposnse-section">
-        <h2 class="quiz-title">Sample Quiz</h2>
-        <h3 class="quiz-title">No Response from AZURE YET</h3>
-
-    </div>
 
     <div id="error-section">
-        <h3 class="quiz-title">No question content found.</h3>
-        <h4 class="quiz-title">Missing quesion dataset.</h4>
+        <h3 class="quiz-title">Quiz - no question content found.</h3>
+        <h4 class="quiz-title">Missing question dataset.</h4>
         <p>Contact the DLC Team to connect the question content to this interactive.</p>
     </div>
 
@@ -405,7 +400,7 @@
 
         async function getQuestionData() {
             if (data_token != "") {
-                //data_token = "https://raw.githubusercontent.com/JHACUO/InlineQuiz/feature/mcq_setup/data-test.json";
+                data_token = "https://raw.githubusercontent.com/JHACUO/InlineQuiz/feature/mcq_setup/data-all.json";
                 const response = await fetch(data_token);
                 console.log(response);
                 const data = await response.json();
